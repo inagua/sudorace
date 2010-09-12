@@ -13,8 +13,7 @@
 
 @implementation TestArena
 
--(void)testCreationArena {
-	
+-(void)testCreationArena {	
 	Player *joe = [[Player alloc] initWithName:@"joe"];	
 	Arena *arena = [[Arena alloc] initWithPlayer:joe];
 	
@@ -22,7 +21,18 @@
 	GHAssertEquals(1, (int)[grids count], @"");
 	
 	Grid *grid = [grids objectAtIndex:0];
-	GHAssertEquals(grid.player, joe, @""); 
+	GHAssertEquals(grid.player, joe, @""); 	
+}
+
+-(void)testsWhenAcceptNewPlayer {	
+	Player *joe = [[Player alloc] initWithName:@"joe"];	
+	Player *jack = [[Player alloc] initWithName:@"jack"];
+	
+	Arena *arena = [[Arena alloc] initWithPlayer:joe];
+	[arena acceptPlayer:jack];
+	
+	NSArray *grids = [arena gridsOrderedByFilling];
+	GHAssertEquals(2, (int)[grids count], @"");
 	
 }
 

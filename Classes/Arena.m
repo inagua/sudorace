@@ -30,6 +30,10 @@
 	return self;
 }
 
+-(Grid *)acceptPlayer:(Player *)newPlayer{
+	
+}
+
 -(NSArray *)gridsOrderedByFilling{
 	return grids;
 }

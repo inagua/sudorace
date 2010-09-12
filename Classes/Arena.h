@@ -18,6 +18,8 @@
 @property(nonatomic, retain) Grid *originalGrid;
 
 -(id)initWithPlayer:(Player *)creator;
+-(Grid *)acceptPlayer:(Player *)newPlayer;
+
 -(NSArray *)gridsOrderedByFilling;
 
 @end
