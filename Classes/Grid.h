@@ -22,5 +22,6 @@
 
 -(id)initWithString:(NSString *)s;
 -(void)fillX:(int)x Y:(int)y val:(int)val;
+-(double)fillingPercent;
 
 @end

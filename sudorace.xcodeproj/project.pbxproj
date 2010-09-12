@@ -18,7 +18,6 @@
 		70BE50F5123AD2640032918D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		70BE50F6123AD2640032918D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		70BE50FD123AD3440032918D /* GHUnitIOSTestMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE50FB123AD3440032918D /* GHUnitIOSTestMain.m */; };
-		70BE5100123AD3560032918D /* TestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE50FF123AD3560032918D /* TestSimple.m */; };
 		70BE5122123AD6700032918D /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5121123AD6700032918D /* Grid.m */; };
 		70BE5123123AD6700032918D /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5121123AD6700032918D /* Grid.m */; };
 		70BE512A123AD6D10032918D /* TestGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5129123AD6D10032918D /* TestGrid.m */; };
@@ -39,8 +38,6 @@
 		70BE50B9123AD1990032918D /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		70BE50F0123AD23C0032918D /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = /Users/st/gitprojects/GHUnitIOS.framework; sourceTree = "<absolute>"; };
 		70BE50FB123AD3440032918D /* GHUnitIOSTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUnitIOSTestMain.m; sourceTree = "<group>"; };
-		70BE50FE123AD3560032918D /* TestSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSimple.h; sourceTree = "<group>"; };
-		70BE50FF123AD3560032918D /* TestSimple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSimple.m; sourceTree = "<group>"; };
 		70BE5120123AD6700032918D /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
 		70BE5121123AD6700032918D /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 		70BE5128123AD6D10032918D /* TestGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGrid.h; sourceTree = "<group>"; };
@@ -139,8 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				70BE50FB123AD3440032918D /* GHUnitIOSTestMain.m */,
-				70BE50FE123AD3560032918D /* TestSimple.h */,
-				70BE50FF123AD3560032918D /* TestSimple.m */,
 				70BE5128123AD6D10032918D /* TestGrid.h */,
 				70BE5129123AD6D10032918D /* TestGrid.m */,
 			);
@@ -246,7 +241,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				70BE50FD123AD3440032918D /* GHUnitIOSTestMain.m in Sources */,
-				70BE5100123AD3560032918D /* TestSimple.m in Sources */,
 				70BE5122123AD6700032918D /* Grid.m in Sources */,
 				70BE512A123AD6D10032918D /* TestGrid.m in Sources */,
 			);

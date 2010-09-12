@@ -27,8 +27,8 @@ typedef struct SPoint SPoint;
 -(SPoint)fromIndex:(int)index;
 -(int)subIndexFromX:(int)x AndY:(int)y;
 
+-(int) computeNbCellsFilledByUser;
 @end
-
 
 @implementation Grid
 
@@ -50,6 +50,11 @@ typedef struct SPoint SPoint;
 	cells[x][y] = val;
 }
 
+-(double)fillingPercent {	
+	int nbCellsToFind = 81 - [fixedCellsIndexes count]; 	
+	return (double)[self computeNbCellsFilledByUser] / (double)nbCellsToFind;
+}
+
 #pragma mark private methods
 
 -(void)allocArrays{	
@@ -67,10 +72,13 @@ typedef struct SPoint SPoint;
 	}
 }
 
-- (void) checkNotFixedX:(int)x andY:(int)y  {
-	int index = [self indexFromX:x AndY:y];
+-(BOOL) isFixedX:(int)x andY:(int)y  {
+	int index = [self indexFromX:x AndY:y];	
+	return [fixedCellsIndexes containsObject:[NSNumber numberWithInt:index]];	
+}
 	
-	if ([fixedCellsIndexes containsObject:[NSNumber numberWithInt:index]]) {
+- (void) checkNotFixedX:(int)x andY:(int)y  {	
+	if ([self isFixedX:x andY:y]) {
 		[NSException raise:NSInvalidArgumentException format:@"Attempt to fill fixed cell"]; 
 	}
 }
@@ -104,8 +112,7 @@ typedef struct SPoint SPoint;
 			
 			SPoint sp = [self fromIndex:i];
 			int i = sp.i;
-			int j = sp.j;
-			
+			int j = sp.j;			
 			cells[i][j] = value;
 			
 			NSNumber *valueNumber = [NSNumber numberWithInt:value];
@@ -114,8 +121,19 @@ typedef struct SPoint SPoint;
 			int indexSub = [self subIndexFromX:i AndY:j];
 			[subs[indexSub] addObject:valueNumber];
 		}
-
 	}	
+}
+
+-(int) computeNbCellsFilledByUser {	
+	int result = 0;	
+	for (int j = 0; j < 9; j++) {
+		for (int i = 0; i < 9; i++) {			
+			if (![self isFixedX:i andY:j] && cells[i][j]!=0) {
+				result ++;
+			}
+		}
+	}
+	return result;
 }
 
 -(SPoint)fromIndex:(int)index{

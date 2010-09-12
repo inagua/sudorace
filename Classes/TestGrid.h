@@ -7,9 +7,10 @@
 //
 
 #import <GHUnitIOS/GHUnitIOS.h>
+#import "Grid.h"
 
 @interface TestGrid : GHTestCase {
-
+	Grid *grid;
 }
 
 @end
