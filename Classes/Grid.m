@@ -32,6 +32,8 @@ typedef struct SPoint SPoint;
 
 @implementation Grid
 
+@synthesize player;
+
 -(id)initWithString:(NSString *)s{
 	
 	if (self=[super init]) {

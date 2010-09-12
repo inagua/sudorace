@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Player.h"
 
 @interface Grid : NSObject {
 	
@@ -18,7 +18,11 @@
 	NSMutableArray *rows[9];
 	NSMutableArray *cols[9];
 	NSMutableArray *subs[9];
+	
+	Player *player;
 }
+
+@property(nonatomic, retain) Player *player;
 
 -(id)initWithString:(NSString *)s;
 -(void)fillX:(int)x Y:(int)y val:(int)val;
