@@ -16,6 +16,11 @@
 	grid = [[Grid alloc] initWithString:@"246185379317649852589732164623417598178596243495328716854261937762953481931874..."];	
 }
 
+-(void)testValueAt {
+	GHAssertEquals([grid valueAtX:1 Y:0], 4, @"");
+	GHAssertEquals([grid valueAtX:0 Y:1], 3, @"");
+}
+
 -(void)testInitGridWithStringChecksArgLength {	
 	@try {
 		[[Grid alloc] initWithString:@"123"];

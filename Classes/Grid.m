@@ -77,6 +77,14 @@ typedef struct SPoint SPoint;
 	}
 }
 
+-(int)valueAtX:(int)x Y:(int)y {
+	return cells[x][y];
+}
+
+-(BOOL) isFilledX:(int)x andY:(int)y{
+	return [self valueAtX:x Y:y] != 0;
+}
+
 -(BOOL) isFixedX:(int)x andY:(int)y  {
 	int index = [self indexFromX:x AndY:y];	
 	return [fixedCellsIndexes containsObject:[NSNumber numberWithInt:index]];	

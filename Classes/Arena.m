@@ -43,6 +43,32 @@
 	return [grids sortedArrayUsingSelector:@selector(compare:)];
 }
 
+-(double) computePercentFilledByUserAtX:(int)x andY:(int)y{
+	
+	int nbPlayers = [grids count];
+	int nbPlayersThatFilled = 0;
+	
+	for (Grid *grid in grids) {
+		if ([grid isFilledX:x andY:y]) {
+			nbPlayersThatFilled++;
+		}
+	}
+	
+	return (double)nbPlayersThatFilled / (double)nbPlayers;
+}
+
+-(Cell *)cellAtX:(int)x andY:(int)y {
+	
+	if ([originalGrid isFixedX:x andY:y]) {
+		int fixedValue = [originalGrid valueAtX:x Y:y];
+		return [[Cell alloc] initWithFixed:YES value:fixedValue andPercentFilledByPlayers:0];
+	}else {		
+		double percent = [self computePercentFilledByUserAtX:x andY:y];		
+		return [[Cell alloc] initWithFixed:NO value:0 andPercentFilledByPlayers:percent];
+	}
+
+}
+
 #pragma mark private
 -(Grid *) chooseGrid {	
 	Grid *result = [[Grid alloc] initWithString:@"246185379317649852589732164623417598178596243495328716854261937762953481931874..."];

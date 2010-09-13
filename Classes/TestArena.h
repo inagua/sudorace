@@ -7,9 +7,14 @@
 //
 
 #import <GHUnitIOS/GHUnitIOS.h>
+#import "Arena.h"
+#import "Player.h"
 
 @interface TestArena : GHTestCase {
 
+	Arena *arena;
+	Player *joe;
+	
 }
 
 @end

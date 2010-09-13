@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Player.h"
 #import "Grid.h"
+#import "Cell.h"
 
 @interface Arena : NSObject {
 	Grid *originalGrid;
@@ -21,5 +22,7 @@
 -(Grid *)acceptPlayer:(Player *)newPlayer;
 
 -(NSArray *)gridsOrderedByFilling;
+
+-(Cell *)cellAtX:(int)x andY:(int)y;
 
 @end
