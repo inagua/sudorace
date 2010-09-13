@@ -32,10 +32,15 @@
 
 -(Grid *)acceptPlayer:(Player *)newPlayer{
 	
+	Grid *newGrid = [originalGrid copy];
+	newGrid.player = newPlayer;
+	
+	[grids addObject:newGrid];	
+	return newGrid;
 }
 
 -(NSArray *)gridsOrderedByFilling{
-	return grids;
+	return [grids sortedArrayUsingSelector:@selector(compare:)];
 }
 
 #pragma mark private

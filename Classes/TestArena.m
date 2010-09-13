@@ -29,11 +29,20 @@
 	Player *jack = [[Player alloc] initWithName:@"jack"];
 	
 	Arena *arena = [[Arena alloc] initWithPlayer:joe];
-	[arena acceptPlayer:jack];
+	Grid *joeGrid = [[arena gridsOrderedByFilling] objectAtIndex:0];
+	
+	Grid *jackGrid =[arena acceptPlayer:jack];
+	
+	GHAssertEquals(joeGrid.player.name, @"joe", @"");
+	GHAssertEquals(jackGrid.player.name, @"jack", @"");
+	
+	[jackGrid fillX:6 Y:8 val:6];
+	GHAssertEquals([joeGrid fillingPercent], 0.0, @"");
+	GHAssertEquals([jackGrid fillingPercent], 1.0/3.0, @"");
 	
 	NSArray *grids = [arena gridsOrderedByFilling];
 	GHAssertEquals(2, (int)[grids count], @"");
-	
+	GHAssertEqualObjects([grids objectAtIndex:0], jackGrid, @"");
 }
 
 @end

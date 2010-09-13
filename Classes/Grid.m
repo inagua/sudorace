@@ -22,6 +22,7 @@ typedef struct SPoint SPoint;
 - (void)checkSudokuRulesX:(int)x andY:(int)y val:(int)val;
 
 -(void)fillFixedCells:(NSString *)s;
+-(void)copyInitialString:s;
 
 -(int)indexFromX:(int)x AndY:(int)y;
 -(SPoint)fromIndex:(int)index;
@@ -33,13 +34,15 @@ typedef struct SPoint SPoint;
 @implementation Grid
 
 @synthesize player;
+@synthesize initialString;
 
 -(id)initWithString:(NSString *)s{
-	
+		
 	if (self=[super init]) {
 		[self allocArrays];
 		[self checkLength:s];
 		[self fillFixedCells:s];
+		[self copyInitialString:s];
 	}
 	return self;
 }
@@ -126,6 +129,10 @@ typedef struct SPoint SPoint;
 	}	
 }
 
+-(void)copyInitialString:s{
+	self.initialString = s;
+}
+
 -(int) computeNbCellsFilledByUser {	
 	int result = 0;	
 	for (int j = 0; j < 9; j++) {
@@ -154,10 +161,40 @@ typedef struct SPoint SPoint;
 	return (y/3)*3+ x / 3;
 }
 
+#pragma mark NSCopying
+- (id)copyWithZone:(NSZone *)zone{
+	return [[Grid alloc] initWithString:self.initialString];
+}
+
+#pragma mark compare
+
+- (NSComparisonResult)compare:(id)otherObject {
+	
+	double selfPercent = [self fillingPercent];
+	double otherPercent = [(Grid *)otherObject fillingPercent];
+	
+	if (selfPercent > otherPercent) {
+		return NSOrderedAscending;
+	}else if (selfPercent < otherPercent) {
+		return NSOrderedDescending;
+	}else {
+		return NSOrderedSame;
+	}
+	
+}
+
 #pragma mark -
 
+-(void)dealloc{
+	[player release];
+	[initialString release];	
+	[fixedCellsIndexes release];
+		
+	[super dealloc];
+}
+
 -(NSString *)description {	
-	NSString *result = [NSString string];
+	NSString *result = [NSString stringWithFormat:@"%@ \n", player.name];
 	for (int j = 0; j < 9; j++) {
 		for (int i = 0; i < 9; i++) {
 			result = [result stringByAppendingFormat:@"%d ", cells[i][j] ];
