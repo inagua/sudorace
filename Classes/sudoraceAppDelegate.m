@@ -7,19 +7,23 @@
 //
 
 #import "sudoraceAppDelegate.h"
+#import "SettingsViewController.h"
 
 @implementation sudoraceAppDelegate
 
 @synthesize window;
-
+@synthesize navController;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    // Override point for customization after application launch.
+	SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+	navController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+	[settingsViewController release];
 	
+	[window addSubview:navController.view];
     [window makeKeyAndVisible];
 	
 	return YES;

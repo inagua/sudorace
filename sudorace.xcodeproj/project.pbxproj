@@ -13,13 +13,20 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		70030194123E57C100F686AC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 70030193123E57C100F686AC /* Settings.bundle */; };
+		70030215123E5D8000F686AC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70030213123E5D8000F686AC /* SettingsViewController.m */; };
+		70030216123E5D8000F686AC /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70030214123E5D8000F686AC /* SettingsViewController.xib */; };
+		70030228123E5E6400F686AC /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70030226123E5E6400F686AC /* DashboardViewController.m */; };
+		70030229123E5E6400F686AC /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70030227123E5E6400F686AC /* DashboardViewController.xib */; };
+		70030247123E606600F686AC /* ArenaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70030245123E606600F686AC /* ArenaViewController.m */; };
+		70030248123E606600F686AC /* ArenaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70030246123E606600F686AC /* ArenaViewController.xib */; };
+		70030251123E627C00F686AC /* sudorace.png in Resources */ = {isa = PBXBuildFile; fileRef = 70030250123E627C00F686AC /* sudorace.png */; };
 		7014881B123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
 		7014881C123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
 		705B3499123D34DC00A9A735 /* Arena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B3498123D34DC00A9A735 /* Arena.m */; };
 		705B349A123D34DC00A9A735 /* Arena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B3498123D34DC00A9A735 /* Arena.m */; };
 		705B349E123D357400A9A735 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B349D123D357400A9A735 /* Player.m */; };
 		705B349F123D357400A9A735 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B349D123D357400A9A735 /* Player.m */; };
-		705B34B6123D37E100A9A735 /* TestArena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B34B5123D37E100A9A735 /* TestArena.m */; };
 		705B34B7123D37E100A9A735 /* TestArena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B34B5123D37E100A9A735 /* TestArena.m */; };
 		70BE50F1123AD23C0032918D /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BE50F0123AD23C0032918D /* GHUnitIOS.framework */; };
 		70BE50F4123AD2640032918D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -29,7 +36,6 @@
 		70BE5122123AD6700032918D /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5121123AD6700032918D /* Grid.m */; };
 		70BE5123123AD6700032918D /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5121123AD6700032918D /* Grid.m */; };
 		70BE512A123AD6D10032918D /* TestGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5129123AD6D10032918D /* TestGrid.m */; };
-		70BE512B123AD6D10032918D /* TestGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5129123AD6D10032918D /* TestGrid.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +48,17 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* sudorace_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sudorace_Prefix.pch; sourceTree = "<group>"; };
+		70030193123E57C100F686AC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		70030212123E5D8000F686AC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		70030213123E5D8000F686AC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		70030214123E5D8000F686AC /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
+		70030225123E5E6400F686AC /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		70030226123E5E6400F686AC /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		70030227123E5E6400F686AC /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DashboardViewController.xib; path = Classes/DashboardViewController.xib; sourceTree = "<group>"; };
+		70030244123E606600F686AC /* ArenaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArenaViewController.h; sourceTree = "<group>"; };
+		70030245123E606600F686AC /* ArenaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArenaViewController.m; sourceTree = "<group>"; };
+		70030246123E606600F686AC /* ArenaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArenaViewController.xib; path = Classes/ArenaViewController.xib; sourceTree = "<group>"; };
+		70030250123E627C00F686AC /* sudorace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sudorace.png; sourceTree = "<group>"; };
 		70148819123E23CF009439A7 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		7014881A123E23CF009439A7 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		705B3497123D34DC00A9A735 /* Arena.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arena.h; sourceTree = "<group>"; };
@@ -89,6 +106,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				70030211123E5D5800F686AC /* Controllers */,
 				70BE511B123AD4270032918D /* Model */,
 				70BE50FA123AD3350032918D /* Tests */,
 				1D3623240D0F684500981E51 /* sudoraceAppDelegate.h */,
@@ -132,8 +150,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				7003024F123E627000F686AC /* images */,
+				70030193123E57C100F686AC /* Settings.bundle */,
 				8D1107310486CEB800E47090 /* sudorace-Info.plist */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				70030246123E606600F686AC /* ArenaViewController.xib */,
+				70030227123E5E6400F686AC /* DashboardViewController.xib */,
+				70030214123E5D8000F686AC /* SettingsViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -146,6 +169,27 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70030211123E5D5800F686AC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				70030212123E5D8000F686AC /* SettingsViewController.h */,
+				70030213123E5D8000F686AC /* SettingsViewController.m */,
+				70030225123E5E6400F686AC /* DashboardViewController.h */,
+				70030226123E5E6400F686AC /* DashboardViewController.m */,
+				70030244123E606600F686AC /* ArenaViewController.h */,
+				70030245123E606600F686AC /* ArenaViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7003024F123E627000F686AC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				70030250123E627C00F686AC /* sudorace.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 		70BE50FA123AD3350032918D /* Tests */ = {
@@ -236,6 +280,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				70030194123E57C100F686AC /* Settings.bundle in Resources */,
+				70030216123E5D8000F686AC /* SettingsViewController.xib in Resources */,
+				70030229123E5E6400F686AC /* DashboardViewController.xib in Resources */,
+				70030248123E606600F686AC /* ArenaViewController.xib in Resources */,
+				70030251123E627C00F686AC /* sudorace.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,11 +305,12 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* sudoraceAppDelegate.m in Sources */,
 				70BE5123123AD6700032918D /* Grid.m in Sources */,
-				70BE512B123AD6D10032918D /* TestGrid.m in Sources */,
 				705B3499123D34DC00A9A735 /* Arena.m in Sources */,
 				705B349E123D357400A9A735 /* Player.m in Sources */,
-				705B34B6123D37E100A9A735 /* TestArena.m in Sources */,
 				7014881B123E23CF009439A7 /* Cell.m in Sources */,
+				70030215123E5D8000F686AC /* SettingsViewController.m in Sources */,
+				70030228123E5E6400F686AC /* DashboardViewController.m in Sources */,
+				70030247123E606600F686AC /* ArenaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
