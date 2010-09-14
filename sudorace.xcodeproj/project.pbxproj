@@ -23,6 +23,7 @@
 		70030251123E627C00F686AC /* sudorace.png in Resources */ = {isa = PBXBuildFile; fileRef = 70030250123E627C00F686AC /* sudorace.png */; };
 		7014881B123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
 		7014881C123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
+		70534DFD123FE63300B0C9D9 /* TransparentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70534DFC123FE63300B0C9D9 /* TransparentButton.m */; };
 		705B3499123D34DC00A9A735 /* Arena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B3498123D34DC00A9A735 /* Arena.m */; };
 		705B349A123D34DC00A9A735 /* Arena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B3498123D34DC00A9A735 /* Arena.m */; };
 		705B349E123D357400A9A735 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B349D123D357400A9A735 /* Player.m */; };
@@ -61,6 +62,8 @@
 		70030250123E627C00F686AC /* sudorace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sudorace.png; sourceTree = "<group>"; };
 		70148819123E23CF009439A7 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		7014881A123E23CF009439A7 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		70534DFB123FE63300B0C9D9 /* TransparentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentButton.h; sourceTree = "<group>"; };
+		70534DFC123FE63300B0C9D9 /* TransparentButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentButton.m; sourceTree = "<group>"; };
 		705B3497123D34DC00A9A735 /* Arena.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arena.h; sourceTree = "<group>"; };
 		705B3498123D34DC00A9A735 /* Arena.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arena.m; sourceTree = "<group>"; };
 		705B349C123D357400A9A735 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				70534DF9123FE61400B0C9D9 /* Views */,
 				70030211123E5D5800F686AC /* Controllers */,
 				70BE511B123AD4270032918D /* Model */,
 				70BE50FA123AD3350032918D /* Tests */,
@@ -174,12 +178,12 @@
 		70030211123E5D5800F686AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				70030212123E5D8000F686AC /* SettingsViewController.h */,
-				70030213123E5D8000F686AC /* SettingsViewController.m */,
-				70030225123E5E6400F686AC /* DashboardViewController.h */,
-				70030226123E5E6400F686AC /* DashboardViewController.m */,
 				70030244123E606600F686AC /* ArenaViewController.h */,
 				70030245123E606600F686AC /* ArenaViewController.m */,
+				70030225123E5E6400F686AC /* DashboardViewController.h */,
+				70030226123E5E6400F686AC /* DashboardViewController.m */,
+				70030212123E5D8000F686AC /* SettingsViewController.h */,
+				70030213123E5D8000F686AC /* SettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -190,6 +194,15 @@
 				70030250123E627C00F686AC /* sudorace.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		70534DF9123FE61400B0C9D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				70534DFB123FE63300B0C9D9 /* TransparentButton.h */,
+				70534DFC123FE63300B0C9D9 /* TransparentButton.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		70BE50FA123AD3350032918D /* Tests */ = {
@@ -311,6 +324,7 @@
 				70030215123E5D8000F686AC /* SettingsViewController.m in Sources */,
 				70030228123E5E6400F686AC /* DashboardViewController.m in Sources */,
 				70030247123E606600F686AC /* ArenaViewController.m in Sources */,
+				70534DFD123FE63300B0C9D9 /* TransparentButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
