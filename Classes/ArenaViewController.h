@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Arena.h"
+#import "ArenaView.h"
 
 @interface ArenaViewController : UIViewController {
 	
+	Arena *arena;
+	IBOutlet ArenaView *arenaView;
 }
+
+@property(nonatomic, retain) Arena *arena;
+@property(nonatomic, retain) ArenaView *arenaView;
 
 @end

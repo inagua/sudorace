@@ -8,12 +8,19 @@
 
 #import "DashboardViewController.h"
 #import "ArenaViewController.h"
+#import "Player.h"
+#import "Arena.h"
 
 @implementation DashboardViewController
 
 -(IBAction) createArena{
+		
+	Player *me = [[Player alloc] initWithName:@"Joe"];
+	Arena *arena = [[Arena alloc] initWithPlayer:me];
 	
 	ArenaViewController *arenaController = [[ArenaViewController alloc] initWithNibName:@"ArenaViewController" bundle:nil];
+	arenaController.arena = arena;	
+	
 	[self.navigationController pushViewController:arenaController animated:YES];
 	[arenaController release];
 	
