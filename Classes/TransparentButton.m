@@ -9,15 +9,15 @@
 #import "TransparentButton.h"
 
 @interface TransparentButton(private)
-
 -(void)showKeyboard;
-
+- (void) recordCurrentCell: (NSSet *) touches;
 @end
-
 
 @implementation TransparentButton
 
 @synthesize keyboard;
+@synthesize currentX;
+@synthesize currentY;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -26,17 +26,8 @@
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-	
-	UITouch *touch = [touches anyObject];	
-	float x = [touch locationInView:self].x;
-	float y = [touch locationInView:self].y;
-	
-	int i = (int)( x * 9 / self.bounds.size.width );
-	int j = (int)( y * 9 / self.bounds.size.height );
-	
-	NSLog(@"touch %d %d", i, j);	
-	
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{	
+	[self recordCurrentCell: touches];
 	[self showKeyboard];
 }
 
@@ -54,6 +45,15 @@
 	keyboard.hidden = NO;
 }
 
+- (void) recordCurrentCell: (NSSet *) touches  {
+	UITouch *touch = [touches anyObject];	
+	float x = [touch locationInView:self].x;
+	float y = [touch locationInView:self].y;
+	
+	currentX = (int)( x * 9 / self.bounds.size.width );
+	currentY = (int)( y * 9 / self.bounds.size.height );	
+	NSLog(@"touch %d %d", currentX, currentY);	
+}
 
 #pragma mark -
 

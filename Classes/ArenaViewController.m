@@ -15,6 +15,7 @@
 @synthesize grid;
 @synthesize arenaView;
 @synthesize keyboard;
+@synthesize transparentButton;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -31,7 +32,19 @@
 	int digit = [button.titleLabel.text characterAtIndex:0] - '0';	
 	NSLog(@"digit is %d", digit);
 
+	int currentX = transparentButton.currentX;
+	int currentY = transparentButton.currentY;	
+	NSLog(@"%@ %d %d", grid, currentX, currentY);
+	
+	@try {
+		[grid fillX:currentX Y:currentY val:digit];
+	}
+	@catch (NSException * e) {
+		NSLog(@"%@", e);
+	}
+
 	keyboard.hidden = YES;
+	
 }
 
 
@@ -67,10 +80,10 @@
 
 - (void)dealloc {
 	[arena release];
-	[arenaView release];
-	
+	[arenaView release];	
 	[grid release];
 	[keyboard release];
+	[transparentButton release];	
 	
     [super dealloc];
 }

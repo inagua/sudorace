@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Arena.h"
 #import "ArenaView.h"
+#import "TransparentButton.h"
 
 @interface ArenaViewController : UIViewController {
 	
@@ -17,12 +18,16 @@
 	
 	IBOutlet ArenaView *arenaView;
 	IBOutlet UIView *keyboard;
+	IBOutlet TransparentButton *transparentButton;
+	
 }
 
 @property(nonatomic, retain) Arena *arena;
 @property(nonatomic, retain) Grid *grid;
 @property(nonatomic, retain) ArenaView *arenaView;
 @property(nonatomic, retain) UIView *keyboard;
+@property(nonatomic, retain) TransparentButton *transparentButton;
+
 
 -(IBAction)digitPressed:(id)sender;
 

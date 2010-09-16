@@ -64,9 +64,9 @@ typedef struct SPoint SPoint;
 
 -(void)allocArrays{	
 	for (int i = 0; i < 9; i++) {
-		rows[i] = [NSMutableArray array];
-		cols[i] = [NSMutableArray array];
-		subs[i] = [NSMutableArray array];
+		rows[i] = [[NSMutableArray alloc] initWithCapacity:9];
+		cols[i] = [[NSMutableArray alloc] initWithCapacity:9];
+		subs[i] = [[NSMutableArray alloc] initWithCapacity:9];
 	}	
 }
 
@@ -116,6 +116,7 @@ typedef struct SPoint SPoint;
 -(void)fillFixedCells:(NSString *)s{
 	
 	fixedCellsIndexes = [[NSMutableArray alloc] init];	
+	
 	for (int i = 0; i < 81; i++) {
 		unichar c = [s characterAtIndex:i];
 		if (c!='.') {
@@ -129,9 +130,13 @@ typedef struct SPoint SPoint;
 			cells[i][j] = value;
 			
 			NSNumber *valueNumber = [NSNumber numberWithInt:value];
+			NSLog(@"A");
 			[rows[j] addObject:valueNumber]; 
+			NSLog(@"B");
 			[cols[i] addObject:valueNumber]; 			
 			int indexSub = [self subIndexFromX:i AndY:j];
+			NSLog(@"C");
+
 			[subs[indexSub] addObject:valueNumber];
 		}
 	}	
@@ -196,8 +201,9 @@ typedef struct SPoint SPoint;
 -(void)dealloc{
 	[player release];
 	[initialString release];	
+	
 	[fixedCellsIndexes release];
-		
+	
 	[super dealloc];
 }
 

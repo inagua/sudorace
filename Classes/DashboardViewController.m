@@ -17,9 +17,11 @@
 		
 	Player *me = [[Player alloc] initWithName:@"Joe"];
 	Arena *arena = [[Arena alloc] initWithPlayer:me];
+	Grid *grid = [[arena gridsOrderedByFilling] objectAtIndex:0];
 	
 	ArenaViewController *arenaController = [[ArenaViewController alloc] initWithNibName:@"ArenaViewController" bundle:nil];
 	arenaController.arena = arena;	
+	arenaController.grid = grid;	
 	
 	[self.navigationController pushViewController:arenaController animated:YES];
 	[arenaController release];

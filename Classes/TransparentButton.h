@@ -11,8 +11,13 @@
 
 @interface TransparentButton : UIView {
 	IBOutlet UIView *keyboard;
+	
+	int currentX;
+	int currentY;
 }
 
 @property(nonatomic, retain) UIView *keyboard;
+@property int currentX;
+@property int currentY;
 
 @end
