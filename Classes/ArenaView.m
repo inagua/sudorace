@@ -21,12 +21,9 @@
 }
 
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
 	
-	NSLog(@"should display %@", arena);
-	
+	NSLog(@"should display %@", arena);	
 	float cellWidth = self.frame.size.width / 9.0;
 	float cellHeight = self.frame.size.height / 9.0;
 	
@@ -55,6 +52,8 @@
 
 
 - (void)dealloc {
+	[arena release];
+	
     [super dealloc];
 }
 

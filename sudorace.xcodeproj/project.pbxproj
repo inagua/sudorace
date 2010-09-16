@@ -38,6 +38,9 @@
 		70BE5122123AD6700032918D /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5121123AD6700032918D /* Grid.m */; };
 		70BE5123123AD6700032918D /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5121123AD6700032918D /* Grid.m */; };
 		70BE512A123AD6D10032918D /* TestGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5129123AD6D10032918D /* TestGrid.m */; };
+		70EFBEF11242478A005127AD /* clean_code_72_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEF01242478A005127AD /* clean_code_72_color.png */; };
+		70EFBEFC1242489A005127AD /* kentbeck.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEFA1242489A005127AD /* kentbeck.png */; };
+		70EFBEFD1242489A005127AD /* st.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEFB1242489A005127AD /* st.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,9 @@
 		70BE5121123AD6700032918D /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 		70BE5128123AD6D10032918D /* TestGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGrid.h; sourceTree = "<group>"; };
 		70BE5129123AD6D10032918D /* TestGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGrid.m; sourceTree = "<group>"; };
+		70EFBEF01242478A005127AD /* clean_code_72_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean_code_72_color.png; sourceTree = "<group>"; };
+		70EFBEFA1242489A005127AD /* kentbeck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kentbeck.png; sourceTree = "<group>"; };
+		70EFBEFB1242489A005127AD /* st.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st.jpg; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* sudorace-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "sudorace-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +200,7 @@
 		7003024F123E627000F686AC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				70EFBEF31242478F005127AD /* fakeIcons */,
 				70030250123E627C00F686AC /* sudorace.png */,
 			);
 			name = images;
@@ -235,6 +242,16 @@
 				7014881A123E23CF009439A7 /* Cell.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		70EFBEF31242478F005127AD /* fakeIcons */ = {
+			isa = PBXGroup;
+			children = (
+				70EFBEF01242478A005127AD /* clean_code_72_color.png */,
+				70EFBEFA1242489A005127AD /* kentbeck.png */,
+				70EFBEFB1242489A005127AD /* st.jpg */,
+			);
+			name = fakeIcons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +320,9 @@
 				70030229123E5E6400F686AC /* DashboardViewController.xib in Resources */,
 				70030248123E606600F686AC /* ArenaViewController.xib in Resources */,
 				70030251123E627C00F686AC /* sudorace.png in Resources */,
+				70EFBEF11242478A005127AD /* clean_code_72_color.png in Resources */,
+				70EFBEFC1242489A005127AD /* kentbeck.png in Resources */,
+				70EFBEFD1242489A005127AD /* st.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

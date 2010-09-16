@@ -8,9 +8,16 @@
 
 #import "TransparentButton.h"
 
+@interface TransparentButton(private)
+
+-(void)showKeyboard;
+
+@end
+
 
 @implementation TransparentButton
 
+@synthesize keyboard;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -29,6 +36,8 @@
 	int j = (int)( y * 9 / self.bounds.size.height );
 	
 	NSLog(@"touch %d %d", i, j);	
+	
+	[self showKeyboard];
 }
 
 /*
@@ -39,7 +48,17 @@
 }
 */
 
+#pragma mark private
+
+-(void)showKeyboard{
+	keyboard.hidden = NO;
+}
+
+
+#pragma mark -
+
 - (void)dealloc {
+	[keyboard release];
     [super dealloc];
 }
 

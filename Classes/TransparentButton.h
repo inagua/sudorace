@@ -10,7 +10,9 @@
 
 
 @interface TransparentButton : UIView {
-
+	IBOutlet UIView *keyboard;
 }
+
+@property(nonatomic, retain) UIView *keyboard;
 
 @end

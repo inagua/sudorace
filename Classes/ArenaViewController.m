@@ -12,7 +12,9 @@
 @implementation ArenaViewController
 
 @synthesize arena;
+@synthesize grid;
 @synthesize arenaView;
+@synthesize keyboard;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -23,6 +25,15 @@
     return self;
 }
 */
+
+-(IBAction)digitPressed:(id)sender{	
+	UIButton *button = (UIButton *)sender;						
+	int digit = [button.titleLabel.text characterAtIndex:0] - '0';	
+	NSLog(@"digit is %d", digit);
+
+	keyboard.hidden = YES;
+}
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -57,6 +68,10 @@
 - (void)dealloc {
 	[arena release];
 	[arenaView release];
+	
+	[grid release];
+	[keyboard release];
+	
     [super dealloc];
 }
 

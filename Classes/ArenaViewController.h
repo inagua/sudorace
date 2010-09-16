@@ -13,10 +13,18 @@
 @interface ArenaViewController : UIViewController {
 	
 	Arena *arena;
+	Grid *grid;
+	
 	IBOutlet ArenaView *arenaView;
+	IBOutlet UIView *keyboard;
 }
 
 @property(nonatomic, retain) Arena *arena;
+@property(nonatomic, retain) Grid *grid;
 @property(nonatomic, retain) ArenaView *arenaView;
+@property(nonatomic, retain) UIView *keyboard;
+
+-(IBAction)digitPressed:(id)sender;
+
 
 @end
