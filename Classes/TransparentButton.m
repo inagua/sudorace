@@ -42,7 +42,14 @@
 #pragma mark private
 
 -(void)showKeyboard{
-	keyboard.hidden = NO;
+	keyboard.hidden = NO;	
+	
+	// TODO use single nsstimer !
+	[self performSelector:@selector(hideKeyboard) withObject:nil afterDelay:2];
+}
+
+-(void)hideKeyboard{
+	keyboard.hidden = YES;
 }
 
 - (void) recordCurrentCell: (NSSet *) touches  {

@@ -8,6 +8,7 @@
 
 #import "TestGrid.h"
 #import "Grid.h"
+#import "SudokuException.h"
 
 @implementation TestGrid
 
@@ -35,12 +36,12 @@
 		//	attempt to fill a fixed cell 
 	GHAssertThrows([grid fillX:5 Y:8 val:4], @"");
 		// value out of range
-	GHAssertThrows([grid fillX:6 Y:8 val:10], @"");	
+	GHAssertThrows([grid fillX:6 Y:8 val:10], @"");
 	
 		// value already in row		
-	GHAssertThrows([grid fillX:6 Y:8 val:9], @"");	
+	GHAssertThrowsSpecific([grid fillX:6 Y:8 val:9], SudokuException, @"");	
 		// value already in col		
-	GHAssertThrows([grid fillX:6 Y:8 val:5], @"");		
+	GHAssertThrowsSpecific([grid fillX:6 Y:8 val:5], SudokuException, @"");		
 }
 
 -(void)testCanFillGridWithCorrectValues {	

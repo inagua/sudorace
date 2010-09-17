@@ -32,6 +32,6 @@
 
 -(BOOL) isFixedX:(int)x andY:(int)y;
 -(BOOL) isFilledX:(int)x andY:(int)y;
--(int)valueAtX:(int)x Y:(int)y;
+-(int) valueAtX:(int)x Y:(int)y;
 
 @end

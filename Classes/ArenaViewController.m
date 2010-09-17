@@ -7,7 +7,7 @@
 //
 
 #import "ArenaViewController.h"
-
+#import "SudokuException.h"
 
 @implementation ArenaViewController
 
@@ -39,7 +39,10 @@
 	@try {
 		[grid fillX:currentX Y:currentY val:digit];
 	}
-	@catch (NSException * e) {
+	@catch (SudokuException *se) {
+		NSLog(@"Sudoku exc type=%d, guilty=%d", se.exceptionType, se.guiltyIndex);
+	}
+	@catch (NSException *e) {
 		NSLog(@"%@", e);
 	}
 

@@ -7,6 +7,7 @@
 //
 
 #import "Grid.h"
+#import "SudokuException.h"
 
 struct SPoint {
 	int i;
@@ -50,8 +51,7 @@ typedef struct SPoint SPoint;
 
 -(void)fillX:(int)x Y:(int)y val:(int)val{	
 	[self checkNotFixedX:x andY:y];	
-	[self checkSudokuRulesX:x andY:y val:val];
-	
+	[self checkSudokuRulesX:x andY:y val:val];	
 	cells[x][y] = val;
 }
 
@@ -96,9 +96,10 @@ typedef struct SPoint SPoint;
 	}
 }
 
--(void)checkSets:(NSArray *)array name:(NSString *)name DoesNotContain:(int)val {
-	if ([array containsObject:[NSNumber numberWithInt:val]]){
-		[NSException raise:NSInvalidArgumentException format:@"%@ contains %d", name, val];
+-(void)checkSets:(NSArray *)array atIndex:(int)guilty type:(SudokuExceptionType)typeException DoesNotContain:(int)val {
+	
+	if ([array containsObject:[NSNumber numberWithInt:val]]){			
+		@throw [[SudokuException alloc] initWithType:typeException guilty:guilty];
 	}
 }
 
@@ -106,11 +107,11 @@ typedef struct SPoint SPoint;
 	if (val<0 || val>9) {
 		[NSException raise:NSInvalidArgumentException format:@"wrong val %d", val]; 
 	}
-	
-	[self checkSets:rows[y] name:@"rows" DoesNotContain:val ];
-	[self checkSets:cols[x] name:@"cols" DoesNotContain:val];
+
+	[self checkSets:rows[y]			atIndex:y			type:RowException DoesNotContain:val ];
+	[self checkSets:cols[x]			atIndex:x			type:ColException DoesNotContain:val];
 	int indexSub = [self subIndexFromX:x AndY:y];
-	[self checkSets:subs[indexSub] name:@"subs" DoesNotContain:val];
+	[self checkSets:subs[indexSub]	atIndex:indexSub	type:SubException DoesNotContain:val ];
 }
 
 -(void)fillFixedCells:(NSString *)s{
@@ -130,12 +131,9 @@ typedef struct SPoint SPoint;
 			cells[i][j] = value;
 			
 			NSNumber *valueNumber = [NSNumber numberWithInt:value];
-			NSLog(@"A");
 			[rows[j] addObject:valueNumber]; 
-			NSLog(@"B");
 			[cols[i] addObject:valueNumber]; 			
 			int indexSub = [self subIndexFromX:i AndY:j];
-			NSLog(@"C");
 
 			[subs[indexSub] addObject:valueNumber];
 		}
