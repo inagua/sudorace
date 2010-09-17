@@ -8,6 +8,8 @@
 
 #import "TransparentButton.h"
 
+#define TIMEOUT_HIDE_KEYBOARD 2
+
 @interface TransparentButton(private)
 -(void)showKeyboard;
 - (void) recordCurrentCell: (NSSet *) touches;
@@ -16,12 +18,13 @@
 @implementation TransparentButton
 
 @synthesize keyboard;
+@synthesize keyboardHider;
+
 @synthesize currentX;
 @synthesize currentY;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        // Initialization code
     }
     return self;
 }
@@ -44,11 +47,25 @@
 -(void)showKeyboard{
 	keyboard.hidden = NO;	
 	
-	// TODO use single nsstimer !
-	[self performSelector:@selector(hideKeyboard) withObject:nil afterDelay:2];
+	if (!keyboardHider || ![keyboardHider isValid]) {
+		NSLog(@">>>>");
+		if(keyboardHider){
+			NSLog(@"AFTER first time");
+			[keyboardHider invalidate];
+		}else {
+			NSLog(@"first time");
+		}
+		
+		self.keyboardHider = [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_HIDE_KEYBOARD 
+														 target:self
+													   selector:@selector(hideKeyboard)
+													   userInfo:nil
+														repeats:NO];
+	}
 }
 
 -(void)hideKeyboard{
+	[keyboardHider invalidate];
 	keyboard.hidden = YES;
 }
 

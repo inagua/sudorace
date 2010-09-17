@@ -14,9 +14,12 @@
 	
 	int currentX;
 	int currentY;
+	
+	NSTimer *keyboardHider;
 }
 
 @property(nonatomic, retain) UIView *keyboard;
+@property(nonatomic, retain) NSTimer *keyboardHider;
 @property int currentX;
 @property int currentY;
 
