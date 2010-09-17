@@ -40,6 +40,8 @@
 		70BE5122123AD6700032918D /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5121123AD6700032918D /* Grid.m */; };
 		70BE5123123AD6700032918D /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5121123AD6700032918D /* Grid.m */; };
 		70BE512A123AD6D10032918D /* TestGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5129123AD6D10032918D /* TestGrid.m */; };
+		70C7F9521243CFA70072106C /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7F9511243CFA70072106C /* GridView.m */; };
+		70C7F9531243CFA70072106C /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7F9511243CFA70072106C /* GridView.m */; };
 		70EFBEF11242478A005127AD /* clean_code_72_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEF01242478A005127AD /* clean_code_72_color.png */; };
 		70EFBEFC1242489A005127AD /* kentbeck.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEFA1242489A005127AD /* kentbeck.png */; };
 		70EFBEFD1242489A005127AD /* st.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEFB1242489A005127AD /* st.jpg */; };
@@ -88,6 +90,8 @@
 		70BE5121123AD6700032918D /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 		70BE5128123AD6D10032918D /* TestGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGrid.h; sourceTree = "<group>"; };
 		70BE5129123AD6D10032918D /* TestGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGrid.m; sourceTree = "<group>"; };
+		70C7F9501243CFA70072106C /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
+		70C7F9511243CFA70072106C /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		70EFBEF01242478A005127AD /* clean_code_72_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean_code_72_color.png; sourceTree = "<group>"; };
 		70EFBEFA1242489A005127AD /* kentbeck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kentbeck.png; sourceTree = "<group>"; };
 		70EFBEFB1242489A005127AD /* st.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st.jpg; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 				70534DFC123FE63300B0C9D9 /* TransparentButton.m */,
 				7050691B124214D5002E52A9 /* ArenaView.h */,
 				7050691C124214D6002E52A9 /* ArenaView.m */,
+				70C7F9501243CFA70072106C /* GridView.h */,
+				70C7F9511243CFA70072106C /* GridView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -312,7 +318,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "sudorace" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -366,6 +379,7 @@
 				70534DFD123FE63300B0C9D9 /* TransparentButton.m in Sources */,
 				7050691D124214D6002E52A9 /* ArenaView.m in Sources */,
 				702DCBCA12437BE400A54B41 /* SudokuException.m in Sources */,
+				70C7F9521243CFA70072106C /* GridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +395,7 @@
 				705B34B7123D37E100A9A735 /* TestArena.m in Sources */,
 				7014881C123E23CF009439A7 /* Cell.m in Sources */,
 				702DCBCB12437BE400A54B41 /* SudokuException.m in Sources */,
+				70C7F9531243CFA70072106C /* GridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +497,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
 		};
@@ -496,7 +511,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Release;
 		};

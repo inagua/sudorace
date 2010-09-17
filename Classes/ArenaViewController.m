@@ -14,6 +14,7 @@
 @synthesize arena;
 @synthesize grid;
 @synthesize arenaView;
+@synthesize gridView;
 @synthesize keyboard;
 @synthesize transparentButton;
 
@@ -32,12 +33,18 @@
 	int digit = [button.titleLabel.text characterAtIndex:0] - '0';	
 	NSLog(@"digit is %d", digit);
 
+	if (digit>9) {
+		NSLog(@"will clear cell");
+		return;
+	}
+	
 	int currentX = transparentButton.currentX;
 	int currentY = transparentButton.currentY;	
 	NSLog(@"%@ %d %d", grid, currentX, currentY);
 	
 	@try {
 		[grid fillX:currentX Y:currentY val:digit];
+		[gridView setNeedsDisplay];
 	}
 	@catch (SudokuException *se) {
 		NSLog(@"Sudoku exc type=%d, guilty=%d", se.exceptionType, se.guiltyIndex);
@@ -54,7 +61,9 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	arenaView.arena = self.arena;
+	arenaView.arena			= self.arena;
+	gridView.grid			= self.grid;
+	transparentButton.arena = self.arena;
 	[super viewDidLoad];
 }
 
@@ -84,6 +93,7 @@
 - (void)dealloc {
 	[arena release];
 	[arenaView release];	
+	[gridView release];
 	[grid release];
 	[keyboard release];
 	[transparentButton release];	
