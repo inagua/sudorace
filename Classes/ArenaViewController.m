@@ -15,7 +15,6 @@
 @synthesize grid;
 @synthesize arenaView;
 @synthesize gridView;
-@synthesize keyboard;
 @synthesize transparentButton;
 
 /*
@@ -43,17 +42,17 @@
 	NSLog(@"%@ %d %d", grid, currentX, currentY);
 	
 	@try {
-		[grid fillX:currentX Y:currentY val:digit];
+		[grid fillX:currentX Y:currentY val:digit];		
 		[gridView setNeedsDisplay];
 	}
-	@catch (SudokuException *se) {
+	@catch (SudokuException *se) {		
 		NSLog(@"Violating %@", se);
+		[gridView showViolation:se];
+		[gridView setNeedsDisplay];
 	}
 	@catch (NSException *e) {
-		NSLog(@"%@", e);
+		NSLog(@"DUH DUH DUH %@", e);
 	}
-
-	keyboard.hidden = YES;
 	
 }
 
@@ -95,7 +94,7 @@
 	[arenaView release];	
 	[gridView release];
 	[grid release];
-	[keyboard release];
+
 	[transparentButton release];	
 	
     [super dealloc];

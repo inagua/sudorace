@@ -13,12 +13,8 @@
 	
 	NSString *initialString;
 	
-	int cells[9][9];
-	
+	int cells[9][9];	
 	NSMutableArray *fixedCellsIndexes;
-	NSMutableArray *rows[9];
-	NSMutableArray *cols[9];
-	NSMutableArray *subs[9];
 	
 	Player *player;
 }

@@ -8,19 +8,13 @@
 
 #import "TransparentButton.h"
 
-#define TIMEOUT_HIDE_KEYBOARD 2
-
 @interface TransparentButton(private)
-- (void) showKeyboard;
-- (BOOL) recordCurrentCell: (NSSet *) touches;
+- (void) recordCurrentCell: (NSSet *) touches;
 @end
 
 @implementation TransparentButton
 
 @synthesize arena;
-@synthesize keyboard;
-@synthesize keyboardHider;
-
 @synthesize currentX;
 @synthesize currentY;
 
@@ -32,13 +26,7 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{	
-	if ([self recordCurrentCell: touches]){
-		
-		UITouch *touch = [touches anyObject];
-		if ([touch tapCount]>1) {
-			[self showKeyboard];
-		}
-	}
+	[self recordCurrentCell: touches];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -69,28 +57,7 @@
 
 #pragma mark private
 
--(void)showKeyboard{
-	keyboard.hidden = NO;	
-	
-	if (!keyboardHider || ![keyboardHider isValid]) {		
-		if(keyboardHider){
-			[keyboardHider invalidate];
-		}		
-		self.keyboardHider = [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_HIDE_KEYBOARD 
-														 target:self
-													   selector:@selector(hideKeyboard)
-													   userInfo:nil
-														repeats:NO];
-	}
-}
-
--(void)hideKeyboard{
-	[keyboardHider invalidate];
-	keyboard.hidden = YES;
-}
-
-
-- (BOOL) recordCurrentCell: (NSSet *) touches  {
+- (void) recordCurrentCell: (NSSet *) touches  {
 	UITouch *touch = [touches anyObject];
 	float xTouch = [touch locationInView:self].x;
 	float yTouch = [touch locationInView:self].y;
@@ -103,9 +70,7 @@
 		currentX = x;
 		currentY = y;
 		[self setNeedsDisplay];
-	}
-	
-	return isFree;
+	}	
 }
 
 
@@ -113,8 +78,6 @@
 
 - (void)dealloc {
 	[arena release];
-	[keyboardHider release];
-	[keyboard release];
     [super dealloc];
 }
 

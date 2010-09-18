@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Grid.h"
+#import "SudokuException.h"
 
 @interface GridView : UIView {
 	Grid *grid;	
+	
+	SudokuException *currentViolation;
 }
 
 @property(nonatomic, retain) Grid *grid;
+
+-(void) showViolation:(SudokuException *)sudokuException;
 
 @end

@@ -17,7 +17,6 @@ typedef struct SPoint SPoint;
 
 @interface Grid (private)
 
--(void)allocArrays;
 -(void)checkLength:(NSString *)s;
 - (void)checkNotFixedX:(int)x andY:(int)y;
 - (void)checkSudokuRulesX:(int)x andY:(int)y val:(int)val;
@@ -40,7 +39,6 @@ typedef struct SPoint SPoint;
 -(id)initWithString:(NSString *)s{
 		
 	if (self=[super init]) {
-		[self allocArrays];
 		[self checkLength:s];
 		[self fillFixedCells:s];
 		[self copyInitialString:s];
@@ -61,14 +59,6 @@ typedef struct SPoint SPoint;
 }
 
 #pragma mark private methods
-
--(void)allocArrays{	
-	for (int i = 0; i < 9; i++) {
-		rows[i] = [[NSMutableArray alloc] initWithCapacity:9];
-		cols[i] = [[NSMutableArray alloc] initWithCapacity:9];
-		subs[i] = [[NSMutableArray alloc] initWithCapacity:9];
-	}	
-}
 
 -(void)checkLength:(NSString *)s{
 	int size = [s length];
@@ -96,29 +86,62 @@ typedef struct SPoint SPoint;
 	}
 }
 
--(void)checkSets:(NSArray *)array atIndex:(int)guilty type:(SudokuExceptionType)typeException DoesNotContain:(int)val {
-
-	NSNumber *value = [NSNumber numberWithInt:val];
-	
-	if ([array containsObject:value]){
-		
-		int place = [array indexOfObject:value];
-		
-		NSLog(@"array = %@ place = %d", array, place);
-		
-		@throw [[SudokuException alloc] initWithType:typeException guilty:guilty atPlace:place];
+- (void)checkRow:(int)y DoesNotContain:(int)val except:(int)exceptX {
+	for (int x = 0; x < 9; x++) {
+		if (x==exceptX) {
+			continue;
+		}
+		if ([self valueAtX:x Y:y]==val) {
+			@throw [[SudokuException alloc] initWithType:RowException guilty:y atPlace:x];
+		}
 	}
 }
+
+- (void)checkCol:(int)x DoesNotContain:(int)val except:(int)exceptY {
+	for (int y = 0; y < 9; y++) {
+		if (y==exceptY) {
+			continue;
+		}
+		if ([self valueAtX:x Y:y]==val) {
+			@throw [[SudokuException alloc] initWithType:ColException guilty:x atPlace:y];
+		}
+	}
+}
+
+- (void)checkSub:(int)s DoesNotContain:(int)val exceptX:(int)exceptX andY:(int)exceptY {
+	
+	int originSubX = s%3 *3;
+	int originSubY = s/3 *3;
+	
+	for (int y = 0; y < 3; y++) {
+		int checkY = originSubY + y;
+
+		for (int x = 0; x < 3; x++) {			
+			int checkX = originSubX + x;
+			
+			if (checkX==exceptX	&& checkY==exceptY) {
+				continue;
+			}
+			
+			if ([self valueAtX:checkX Y:checkY] == val) {
+				int place = x + y*3;
+				@throw [[SudokuException alloc] initWithType:SubException guilty:s atPlace:place];
+			}
+		}
+	}
+}
+
 
 - (void)checkSudokuRulesX:(int)x andY:(int)y val:(int)val{
 	if (val<0 || val>9) {
 		[NSException raise:NSInvalidArgumentException format:@"wrong val %d", val]; 
 	}
 
-	[self checkSets:rows[y]			atIndex:y			type:RowException DoesNotContain:val ];
-	[self checkSets:cols[x]			atIndex:x			type:ColException DoesNotContain:val];
+	[self checkRow:y DoesNotContain:val except:x];	
+	[self checkCol:x DoesNotContain:val except:y];
+	
 	int indexSub = [self subIndexFromX:x AndY:y];
-	[self checkSets:subs[indexSub]	atIndex:indexSub	type:SubException DoesNotContain:val ];
+	[self checkSub:indexSub DoesNotContain:val exceptX:x andY:y];
 }
 
 -(void)fillFixedCells:(NSString *)s{
@@ -135,14 +158,7 @@ typedef struct SPoint SPoint;
 			SPoint sp = [self fromIndex:i];
 			int i = sp.i;
 			int j = sp.j;			
-			cells[i][j] = value;
-			
-			NSNumber *valueNumber = [NSNumber numberWithInt:value];
-			[rows[j] addObject:valueNumber]; 
-			[cols[i] addObject:valueNumber]; 			
-			int indexSub = [self subIndexFromX:i AndY:j];
-
-			[subs[indexSub] addObject:valueNumber];
+			cells[i][j] = value;			
 		}
 	}	
 }

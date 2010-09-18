@@ -19,18 +19,14 @@
 	
 	IBOutlet ArenaView *arenaView;
 	IBOutlet GridView *gridView;
-	IBOutlet UIView *keyboard;
-	IBOutlet TransparentButton *transparentButton;
-	
+	IBOutlet TransparentButton *transparentButton;	
 }
 
 @property(nonatomic, retain) Arena *arena;
 @property(nonatomic, retain) Grid *grid;
 @property(nonatomic, retain) ArenaView *arenaView;
 @property(nonatomic, retain) GridView *gridView;
-@property(nonatomic, retain) UIView *keyboard;
 @property(nonatomic, retain) TransparentButton *transparentButton;
-
 
 -(IBAction)digitPressed:(id)sender;
 
