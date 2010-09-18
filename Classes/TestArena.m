@@ -13,7 +13,10 @@
 
 -(void)setUp {
 	joe = [[Player alloc] initWithName:@"joe"];	
-	arena = [[Arena alloc] initWithPlayer:joe];
+	
+	Grid *grid = [[Grid alloc] initWithString:@"246185379317649852589732164623417598178596243495328716854261937762953481931874..."];
+	
+	arena = [[Arena alloc] initWithPlayer:joe grid:grid];
 }
 
 -(void)testAfterArenaCreationGridForJoeIsCreated {		

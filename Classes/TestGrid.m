@@ -40,6 +40,7 @@
 	
 		// value already in row		
 	GHAssertThrowsSpecific([grid fillX:6 Y:8 val:9], SudokuException, @"");	
+	
 		// value already in col		
 	GHAssertThrowsSpecific([grid fillX:6 Y:8 val:5], SudokuException, @"");		
 }

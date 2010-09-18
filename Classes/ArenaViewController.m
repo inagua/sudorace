@@ -47,7 +47,7 @@
 		[gridView setNeedsDisplay];
 	}
 	@catch (SudokuException *se) {
-		NSLog(@"Sudoku exc type=%d, guilty=%d", se.exceptionType, se.guiltyIndex);
+		NSLog(@"Violating %@", se);
 	}
 	@catch (NSException *e) {
 		NSLog(@"%@", e);

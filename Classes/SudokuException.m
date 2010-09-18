@@ -12,15 +12,23 @@
 
 @synthesize guiltyIndex;
 @synthesize exceptionType;
+@synthesize place;
 
--(id) initWithType:(SudokuExceptionType)t guilty:(int)g{
+-(id) initWithType:(SudokuExceptionType)t guilty:(int)g atPlace:(int)p{
 	
 	if (self=[super initWithName:@"SudokuException" reason:@"Violating Rule" userInfo:nil]) {
 		exceptionType	= t;
 		guiltyIndex		= g;
-	}
-	
+		place			= p;
+	}	
 	return self;
+}
+
+-(NSString *)description {
+		
+	NSString *type = exceptionType==ColException ? @"col" : exceptionType==RowException ? @"row" : @"sub"; 
+	
+	return [NSString stringWithFormat:@"%@ %d at place %d", type, guiltyIndex, place];
 }
 
 @end

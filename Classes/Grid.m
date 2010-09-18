@@ -97,9 +97,16 @@ typedef struct SPoint SPoint;
 }
 
 -(void)checkSets:(NSArray *)array atIndex:(int)guilty type:(SudokuExceptionType)typeException DoesNotContain:(int)val {
+
+	NSNumber *value = [NSNumber numberWithInt:val];
 	
-	if ([array containsObject:[NSNumber numberWithInt:val]]){			
-		@throw [[SudokuException alloc] initWithType:typeException guilty:guilty];
+	if ([array containsObject:value]){
+		
+		int place = [array indexOfObject:value];
+		
+		NSLog(@"array = %@ place = %d", array, place);
+		
+		@throw [[SudokuException alloc] initWithType:typeException guilty:guilty atPlace:place];
 	}
 }
 

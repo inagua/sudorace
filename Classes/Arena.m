@@ -17,10 +17,14 @@
 
 @synthesize originalGrid;
 
--(id)initWithPlayer:(Player *)creator{
+-(id)initWithPlayer:(Player *)creator{	
+	return [self initWithPlayer:creator grid:[self chooseGrid]];
+}
+
+-(id)initWithPlayer:(Player *)creator grid:(Grid *)grid{
+	
 	if (self=[super init]) {					
-		
-		self.originalGrid = [self chooseGrid];
+		self.originalGrid = grid;
 		self.originalGrid.player = creator;
 		
 		grids = [[NSMutableArray alloc] init];
@@ -71,7 +75,7 @@
 
 #pragma mark private
 -(Grid *) chooseGrid {	
-//	Grid *result = [[Grid alloc] initWithString:@"246185379317649852589732164623417598178596243495328716854261937762953481931874..."];
+		// TODO : choose grid randomly according to difficulty 
 	Grid *result = [[Grid alloc] initWithString:@"...185379.1764985.58.73.1646.341..9817859.24.49.32.7168..261937762953481931874..."];
 	return result;
 }

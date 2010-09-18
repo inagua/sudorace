@@ -16,12 +16,14 @@ typedef enum {
 
 @interface SudokuException : NSException {
 	int guiltyIndex;	
+	int place;
 	int exceptionType;
 }
 
 @property int guiltyIndex;
 @property int exceptionType;
+@property int place;
 
--(id) initWithType:(SudokuExceptionType)type guilty:(int)g;
+-(id) initWithType:(SudokuExceptionType)t guilty:(int)g atPlace:(int)p;
 
 @end
