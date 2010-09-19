@@ -9,6 +9,7 @@
 #import "TestGrid.h"
 #import "Grid.h"
 #import "SudokuException.h"
+#import "CompositeSudokuException.h"
 
 @implementation TestGrid
 
@@ -42,20 +43,20 @@
 		[grid fillX:6 Y:8 val:3];
 		GHFail(@"shouldn't arrive here");
 	}
-	@catch (SudokuException *se) {
+	@catch (CompositeSudokuException *cse) {
+		
+		GHAssertEquals((int)[[cse sudokuExceptions] count], 3, @"");
+		
+		SudokuException *se = [[cse sudokuExceptions] objectAtIndex:0];
 		GHAssertEquals(se.exceptionType, RowException, @"");
 		GHAssertEquals(se.guiltyIndex, 8, @"");
 		GHAssertEquals(se.place, 1, @"");
-	}
-	
-	@try {
-		[grid fillX:6 Y:8 val:9];
-		GHFail(@"shouldn't arrive here");
-	}
-	@catch (SudokuException *se) {
+		
+		se = [[cse sudokuExceptions] objectAtIndex:1];
 		GHAssertEquals(se.exceptionType, ColException, @"");
-		GHAssertEquals(se.guiltyIndex, 6, @"");
-		GHAssertEquals(se.place, 6, @"");
+		
+		se = [[cse sudokuExceptions] objectAtIndex:2];
+		GHAssertEquals(se.exceptionType, SubException, @"");
 	}
 }
 

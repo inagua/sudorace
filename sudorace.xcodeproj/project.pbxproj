@@ -32,6 +32,8 @@
 		705B349E123D357400A9A735 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B349D123D357400A9A735 /* Player.m */; };
 		705B349F123D357400A9A735 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B349D123D357400A9A735 /* Player.m */; };
 		705B34B7123D37E100A9A735 /* TestArena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B34B5123D37E100A9A735 /* TestArena.m */; };
+		7095CCC41246408000474F45 /* CompositeSudokuException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7095CCC31246408000474F45 /* CompositeSudokuException.m */; };
+		7095CCC51246408000474F45 /* CompositeSudokuException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7095CCC31246408000474F45 /* CompositeSudokuException.m */; };
 		70BE50F1123AD23C0032918D /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BE50F0123AD23C0032918D /* GHUnitIOS.framework */; };
 		70BE50F4123AD2640032918D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		70BE50F5123AD2640032918D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -82,6 +84,8 @@
 		705B349D123D357400A9A735 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		705B34B4123D37E100A9A735 /* TestArena.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArena.h; sourceTree = "<group>"; };
 		705B34B5123D37E100A9A735 /* TestArena.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArena.m; sourceTree = "<group>"; };
+		7095CCC21246408000474F45 /* CompositeSudokuException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompositeSudokuException.h; sourceTree = "<group>"; };
+		7095CCC31246408000474F45 /* CompositeSudokuException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompositeSudokuException.m; sourceTree = "<group>"; };
 		70BE50B7123AD1990032918D /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BE50B9123AD1990032918D /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		70BE50F0123AD23C0032918D /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = /Users/st/gitprojects/GHUnitIOS.framework; sourceTree = "<absolute>"; };
@@ -219,6 +223,8 @@
 			children = (
 				702DCBC812437BE400A54B41 /* SudokuException.h */,
 				702DCBC912437BE400A54B41 /* SudokuException.m */,
+				7095CCC21246408000474F45 /* CompositeSudokuException.h */,
+				7095CCC31246408000474F45 /* CompositeSudokuException.m */,
 			);
 			name = Exceptions;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				7050691D124214D6002E52A9 /* ArenaView.m in Sources */,
 				702DCBCA12437BE400A54B41 /* SudokuException.m in Sources */,
 				70C7F9521243CFA70072106C /* GridView.m in Sources */,
+				7095CCC41246408000474F45 /* CompositeSudokuException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +403,7 @@
 				7014881C123E23CF009439A7 /* Cell.m in Sources */,
 				702DCBCB12437BE400A54B41 /* SudokuException.m in Sources */,
 				70C7F9531243CFA70072106C /* GridView.m in Sources */,
+				7095CCC51246408000474F45 /* CompositeSudokuException.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +505,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
 		};
@@ -511,7 +519,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Release;
 		};

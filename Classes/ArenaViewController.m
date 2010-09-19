@@ -46,9 +46,9 @@
 		[gridView hideViolation];
 		[gridView setNeedsDisplay];
 	}
-	@catch (SudokuException *se) {		
-		NSLog(@"Violating %@", se);
-		[gridView showViolation:se];
+	@catch (CompositeSudokuException *cse) {		
+		NSLog(@"Violating %@", cse);
+		[gridView showViolation:cse];
 	}
 	@catch (NSException *e) {
 		NSLog(@"DUH DUH DUH %@", e);

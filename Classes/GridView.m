@@ -39,14 +39,14 @@
 }
 
 -(void) hideViolation {
-	currentViolation = nil;	
+	currentViolations = nil;	
 	if (self.violationHider) {
 		[self.violationHider invalidate];
 	}
 	[self setNeedsDisplay];
 }
 
--(void) showViolation:(SudokuException *)sudokuException{
+-(void) showViolation:(CompositeSudokuException *)sudokuExceptions{
 	
 	if (self.violationHider) {
 		[self.violationHider invalidate];
@@ -56,7 +56,7 @@
 													selector:@selector(hideViolation) 
 													userInfo:nil
 													 repeats:NO];
-	currentViolation = sudokuException;
+	currentViolations = sudokuExceptions;
 	[self setNeedsDisplay];
 }
 
@@ -84,70 +84,76 @@
 	NSLog(@"drawing wrong cell");
 }
 
--(void) drawColViolation{	
+-(void) drawColViolation:(SudokuException *)violation{	
 	float cellWidth  = [self cellWidth];
 	float cellHeight = [self cellHeight];
 	
-	float x0 = currentViolation.guiltyIndex * cellWidth;
+	float x0 = violation.guiltyIndex * cellWidth;
 	float y0 = 0;
 	float width = cellWidth;
 	float height = 9*cellHeight;	
 	[self drawLinesForRectX0:x0 y0:y0 width:width height:height];	
 	
-	y0 = currentViolation.place * cellHeight;
+	y0 = violation.place * cellHeight;
 	width = cellWidth;
 	height = cellHeight;	
 	[self drawRectX0:x0 y0:y0 width:width height:height];	
 }
 
--(void) drawRowViolation{
+-(void) drawRowViolation:(SudokuException *)violation{
 	float cellWidth  = [self cellWidth];
 	float cellHeight = [self cellHeight];
 	
 	float x0 = 0;
-	float y0 = currentViolation.guiltyIndex * cellHeight;
+	float y0 = violation.guiltyIndex * cellHeight;
 	float width = 9*cellWidth;
 	float height = cellHeight;	
 	[self drawLinesForRectX0:x0 y0:y0 width:width height:height];		
 	
-	x0 = currentViolation.place * cellWidth;
+	x0 = violation.place * cellWidth;
 	width = cellWidth;
 	height = cellHeight;	
 	[self drawRectX0:x0 y0:y0 width:width height:height];	
 }
 
--(void) drawSubViolation{
+-(void) drawSubViolation:(SudokuException *)violation{
 	float cellWidth  = [self cellWidth];
 	float cellHeight = [self cellHeight];
 	
-	float x0 = currentViolation.guiltyIndex % 3 * (3*cellWidth);
-	float y0 = currentViolation.guiltyIndex / 3 * (3*cellHeight);
-	
+	float x0 = violation.guiltyIndex % 3 * (3*cellWidth);
+	float y0 = violation.guiltyIndex / 3 * (3*cellHeight);	
 	float width		= 3*cellWidth;
-	float height	= 3*cellHeight;
-	
+	float height	= 3*cellHeight;	
 	[self drawLinesForRectX0:x0 y0:y0 width:width height:height];	
+	
+	float wrongCellX0 = x0 + violation.place % 3 * cellWidth;
+	float wrongCellY0 = y0 + violation.place / 3 * cellWidth;
+	width = cellWidth;
+	height = cellHeight;	
+	[self drawRectX0:wrongCellX0 y0:wrongCellY0 width:width height:height];	
 }
 
 -(void)drawViolation{
 	
-	if (!currentViolation) {
+	if (!currentViolations) {
 		return;
 	}
 	
-	switch (currentViolation.exceptionType) {
-		case ColException:
-			[self drawColViolation];
-			break;
-		case RowException:
-			[self drawRowViolation];			
-			break;
-		case SubException:
-			[self drawSubViolation];						
-			break;			
-		default:
-			break;
-	} 
+	for (SudokuException *se in currentViolations.sudokuExceptions) {
+		switch (se.exceptionType) {
+			case ColException:
+				[self drawColViolation:se];
+				break;
+			case RowException:
+				[self drawRowViolation:se];			
+				break;
+			case SubException:
+				[self drawSubViolation:se];						
+				break;			
+			default:
+				break;
+		} 
+	}
 }
 
 - (float) cellWidth {
@@ -189,6 +195,7 @@
 - (void)dealloc {
 	[grid release];
 	[violationHider release];
+	[currentViolations release];
     [super dealloc];
 }
 

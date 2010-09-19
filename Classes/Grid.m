@@ -8,6 +8,7 @@
 
 #import "Grid.h"
 #import "SudokuException.h"
+#import "CompositeSudokuException.h"
 
 struct SPoint {
 	int i;
@@ -86,29 +87,29 @@ typedef struct SPoint SPoint;
 	}
 }
 
-- (void)checkRow:(int)y DoesNotContain:(int)val except:(int)exceptX {
+- (void)checkRow:(int)y DoesNotContain:(int)val except:(int)exceptX accu:(CompositeSudokuException *)accu{
 	for (int x = 0; x < 9; x++) {
 		if (x==exceptX) {
 			continue;
 		}
 		if ([self valueAtX:x Y:y]==val) {
-			@throw [[SudokuException alloc] initWithType:RowException guilty:y atPlace:x];
+			[accu addSudokuException:[[SudokuException alloc] initWithType:RowException guilty:y atPlace:x]];
 		}
 	}
 }
 
-- (void)checkCol:(int)x DoesNotContain:(int)val except:(int)exceptY {
+- (void)checkCol:(int)x DoesNotContain:(int)val except:(int)exceptY accu:(CompositeSudokuException *)accu{
 	for (int y = 0; y < 9; y++) {
 		if (y==exceptY) {
 			continue;
 		}
 		if ([self valueAtX:x Y:y]==val) {
-			@throw [[SudokuException alloc] initWithType:ColException guilty:x atPlace:y];
+			[accu addSudokuException:[[SudokuException alloc] initWithType:ColException guilty:x atPlace:y]];
 		}
 	}
 }
 
-- (void)checkSub:(int)s DoesNotContain:(int)val exceptX:(int)exceptX andY:(int)exceptY {
+- (void)checkSub:(int)s DoesNotContain:(int)val exceptX:(int)exceptX andY:(int)exceptY accu:(CompositeSudokuException *)accu{
 	
 	int originSubX = s%3 *3;
 	int originSubY = s/3 *3;
@@ -125,7 +126,7 @@ typedef struct SPoint SPoint;
 			
 			if ([self valueAtX:checkX Y:checkY] == val) {
 				int place = x + y*3;
-				@throw [[SudokuException alloc] initWithType:SubException guilty:s atPlace:place];
+				[accu addSudokuException:[[SudokuException alloc] initWithType:SubException guilty:s atPlace:place]];
 			}
 		}
 	}
@@ -137,11 +138,18 @@ typedef struct SPoint SPoint;
 		[NSException raise:NSInvalidArgumentException format:@"wrong val %d", val]; 
 	}
 
-	[self checkRow:y DoesNotContain:val except:x];	
-	[self checkCol:x DoesNotContain:val except:y];	
-
+	CompositeSudokuException *allViolations = [[CompositeSudokuException alloc] init];
+	
+	[self checkRow:y DoesNotContain:val except:x accu:allViolations];	
+	[self checkCol:x DoesNotContain:val except:y accu:allViolations];	
 	int indexSub = [self subIndexFromX:x AndY:y];
-	[self checkSub:indexSub DoesNotContain:val exceptX:x andY:y];
+	[self checkSub:indexSub DoesNotContain:val exceptX:x andY:y accu:allViolations];
+	
+	NSLog(@"allviolations %@", allViolations.sudokuExceptions);
+	
+	if ([allViolations isViolation]) {
+		@throw allViolations;
+	}	
 }
 
 -(void)fillFixedCells:(NSString *)s{

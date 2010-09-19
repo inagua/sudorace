@@ -9,18 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "Grid.h"
 #import "SudokuException.h"
+#import "CompositeSudokuException.h"
 
 @interface GridView : UIView {
 	Grid *grid;		
 	
-	SudokuException *currentViolation;
+	CompositeSudokuException *currentViolations;
 	NSTimer *violationHider;
 }
 
 @property(nonatomic, retain) Grid *grid;
 @property(nonatomic, retain) NSTimer *violationHider;
 
--(void) showViolation:(SudokuException *)sudokuException;
+-(void) showViolation:(CompositeSudokuException *)sudokuExceptions;
 -(void) hideViolation;
 
 @end
