@@ -43,17 +43,16 @@
 	
 	@try {
 		[grid fillX:currentX Y:currentY val:digit];		
+		[gridView hideViolation];
 		[gridView setNeedsDisplay];
 	}
 	@catch (SudokuException *se) {		
 		NSLog(@"Violating %@", se);
 		[gridView showViolation:se];
-		[gridView setNeedsDisplay];
 	}
 	@catch (NSException *e) {
 		NSLog(@"DUH DUH DUH %@", e);
-	}
-	
+	}	
 }
 
 

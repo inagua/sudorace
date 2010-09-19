@@ -138,8 +138,8 @@ typedef struct SPoint SPoint;
 	}
 
 	[self checkRow:y DoesNotContain:val except:x];	
-	[self checkCol:x DoesNotContain:val except:y];
-	
+	[self checkCol:x DoesNotContain:val except:y];	
+
 	int indexSub = [self subIndexFromX:x AndY:y];
 	[self checkSub:indexSub DoesNotContain:val exceptX:x andY:y];
 }

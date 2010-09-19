@@ -11,13 +11,16 @@
 #import "SudokuException.h"
 
 @interface GridView : UIView {
-	Grid *grid;	
+	Grid *grid;		
 	
 	SudokuException *currentViolation;
+	NSTimer *violationHider;
 }
 
 @property(nonatomic, retain) Grid *grid;
+@property(nonatomic, retain) NSTimer *violationHider;
 
 -(void) showViolation:(SudokuException *)sudokuException;
+-(void) hideViolation;
 
 @end
