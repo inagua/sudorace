@@ -29,15 +29,19 @@
 	[self recordCurrentCell: touches];
 }
 
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{	
+	[self recordCurrentCell: touches];
+}
+
 - (void)drawRect:(CGRect)rect {
     
 	if (currentX != -1) {
 		
-		NSLog(@"drawing %d %d", currentX, currentY);
+			// NSLog(@"drawing %d %d", currentX, currentY);
 		
 		CGContextRef ctx = UIGraphicsGetCurrentContext(); 
-		CGContextSetLineWidth(ctx, 3.0);
-		CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1); 
+		CGContextSetLineWidth(ctx, 2.0);
+		CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 0.8); 
 		
 		CGFloat cellWidth = self.bounds.size.width / 9.0;
 		CGFloat cellHeight = self.bounds.size.height / 9.0;		
@@ -48,7 +52,7 @@
 		CGContextAddLineToPoint( ctx, x0+cellWidth-4, y0+2);		
 		CGContextAddLineToPoint( ctx, x0+cellWidth-4, y0+cellHeight-4);		
 		CGContextAddLineToPoint( ctx, x0+2, y0+cellHeight-4);		
-		CGContextAddLineToPoint( ctx, x0+2, y0);		
+		CGContextAddLineToPoint( ctx, x0+2, y0+2);		
 		
 		CGContextStrokePath(ctx);
 	}	

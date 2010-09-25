@@ -27,6 +27,8 @@
 	float cellWidth = self.frame.size.width / 9.0;
 	float cellHeight = self.frame.size.height / 9.0;
 	
+	[[UIColor blackColor] setFill];
+	
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
 			

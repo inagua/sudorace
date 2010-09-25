@@ -44,6 +44,8 @@
 		70BE512A123AD6D10032918D /* TestGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE5129123AD6D10032918D /* TestGrid.m */; };
 		70C7F9521243CFA70072106C /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7F9511243CFA70072106C /* GridView.m */; };
 		70C7F9531243CFA70072106C /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C7F9511243CFA70072106C /* GridView.m */; };
+		70E6A814124AB682002ED1B5 /* backsudo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E6A813124AB682002ED1B5 /* backsudo.png */; };
+		70E6A818124AB7E5002ED1B5 /* sudorace2.png in Resources */ = {isa = PBXBuildFile; fileRef = 70E6A817124AB7E5002ED1B5 /* sudorace2.png */; };
 		70EFBEF11242478A005127AD /* clean_code_72_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEF01242478A005127AD /* clean_code_72_color.png */; };
 		70EFBEFC1242489A005127AD /* kentbeck.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEFA1242489A005127AD /* kentbeck.png */; };
 		70EFBEFD1242489A005127AD /* st.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70EFBEFB1242489A005127AD /* st.jpg */; };
@@ -96,6 +98,8 @@
 		70BE5129123AD6D10032918D /* TestGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGrid.m; sourceTree = "<group>"; };
 		70C7F9501243CFA70072106C /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		70C7F9511243CFA70072106C /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
+		70E6A813124AB682002ED1B5 /* backsudo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backsudo.png; sourceTree = "<group>"; };
+		70E6A817124AB7E5002ED1B5 /* sudorace2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sudorace2.png; sourceTree = "<group>"; };
 		70EFBEF01242478A005127AD /* clean_code_72_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean_code_72_color.png; sourceTree = "<group>"; };
 		70EFBEFA1242489A005127AD /* kentbeck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kentbeck.png; sourceTree = "<group>"; };
 		70EFBEFB1242489A005127AD /* st.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st.jpg; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 		7003024F123E627000F686AC /* images */ = {
 			isa = PBXGroup;
 			children = (
+				70E6A817124AB7E5002ED1B5 /* sudorace2.png */,
+				70E6A813124AB682002ED1B5 /* backsudo.png */,
 				70EFBEF31242478F005127AD /* fakeIcons */,
 				70030250123E627C00F686AC /* sudorace.png */,
 			);
@@ -356,6 +362,8 @@
 				70EFBEF11242478A005127AD /* clean_code_72_color.png in Resources */,
 				70EFBEFC1242489A005127AD /* kentbeck.png in Resources */,
 				70EFBEFD1242489A005127AD /* st.jpg in Resources */,
+				70E6A814124AB682002ED1B5 /* backsudo.png in Resources */,
+				70E6A818124AB7E5002ED1B5 /* sudorace2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,10 +508,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stephane Tavera (47LH35ERH4)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				SDKROOT = iphonesimulator4.1;
 			};

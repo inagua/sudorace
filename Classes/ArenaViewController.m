@@ -1,4 +1,4 @@
-//
+ //
 //  ArenaViewController.m
 //  sudorace
 //
@@ -9,6 +9,13 @@
 #import "ArenaViewController.h"
 #import "SudokuException.h"
 
+@interface ArenaViewController(private)
+-(void) updateProgress;
+-(void) startClock ;
+-(void) updateClock;
+@end
+
+
 @implementation ArenaViewController
 
 @synthesize arena;
@@ -16,6 +23,8 @@
 @synthesize arenaView;
 @synthesize gridView;
 @synthesize transparentButton;
+@synthesize clock;
+@synthesize myProgressView;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -45,6 +54,8 @@
 		[grid fillX:currentX Y:currentY val:digit];		
 		[gridView hideViolation];
 		[gridView setNeedsDisplay];
+		
+		[self updateProgress];
 	}
 	@catch (CompositeSudokuException *cse) {		
 		NSLog(@"Violating %@", cse);
@@ -62,6 +73,10 @@
 	arenaView.arena			= self.arena;
 	gridView.grid			= self.grid;
 	transparentButton.arena = self.arena;
+	
+	myProgressView.progress = 0.0;
+	[self startClock];
+	
 	[super viewDidLoad];
 }
 
@@ -87,6 +102,36 @@
     // e.g. self.myOutlet = nil;
 }
 
+#pragma mark private
+
+-(void)updateProgress{	
+	myProgressView.progress = [grid fillingPercent];	
+}
+
+-(void) startClock {
+	
+	startTime = [[NSDate date] timeIntervalSince1970];
+	[self updateClock];
+	clockUpdater = [NSTimer scheduledTimerWithTimeInterval:1 
+													target:self
+												  selector:@selector(updateClock)
+												  userInfo:nil
+												   repeats:YES];		
+}
+
+-(void) updateClock {
+	double now = [[NSDate date] timeIntervalSince1970];
+	
+	int nbSeconds = (int)(now - startTime);		
+	int nbHours = nbSeconds / 3600;	
+	nbSeconds -= nbHours * 3600;	
+	int nbMinutes = nbSeconds / 60;
+	nbSeconds = nbSeconds - nbMinutes * 60.0;
+	
+	clock.text = [NSString stringWithFormat:@"%02d:%02d", nbMinutes, nbSeconds];
+}
+
+#pragma mark -
 
 - (void)dealloc {
 	[arena release];
@@ -94,7 +139,9 @@
 	[gridView release];
 	[grid release];
 
-	[transparentButton release];	
+	[transparentButton release];
+	[clock release];
+	[myProgressView release];
 	
     [super dealloc];
 }

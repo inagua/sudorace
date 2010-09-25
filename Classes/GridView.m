@@ -168,12 +168,17 @@
 	NSLog(@"DRAWING GRID");	
 	float cellWidth  = [self cellWidth];
 	float cellHeight = [self cellHeight];
+		
+	[[UIColor grayColor] setFill];
 	
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
 			
-			NSString *text = @" ";
+			if ([grid isFixedX:i andY:j]){
+				continue;
+			}
 			
+			NSString *text = @" ";			
 			if ([grid isFilledX:i andY:j]) {
 				text = [NSString stringWithFormat:@"%d", [grid valueAtX:i Y:j]];
 			}
@@ -182,11 +187,12 @@
 			float y = j * cellHeight;			
 			CGRect textRect = CGRectMake(x + 10.0, y, cellWidth, cellHeight);
 			[text drawInRect:textRect
-					withFont:[UIFont fontWithName:@"HelveticaNeue" size:28]
+					withFont:[UIFont fontWithName:@"Georgia" size:28]
 			   lineBreakMode:UILineBreakModeWordWrap
 				   alignment:UIBaselineAdjustmentAlignBaselines];
 		}
 	}
+
 }
 
 

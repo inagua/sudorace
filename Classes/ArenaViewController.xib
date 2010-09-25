@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1024</int>
 		<string key="IBDocument.SystemVersion">10F569</string>
-		<string key="IBDocument.InterfaceBuilderVersion">788</string>
+		<string key="IBDocument.InterfaceBuilderVersion">804</string>
 		<string key="IBDocument.AppKitVersion">1038.29</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">117</string>
+			<string key="NS.object.0">123</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -57,11 +57,13 @@
 					<object class="IBUIProgressView" id="885865518">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{14, 66}, {56, 9}}</string>
+						<string key="NSFrame">{{14, 66}, {56, 11}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<float key="IBUIAlpha">0.80000001192092896</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<float key="IBUIProgress">0.79577463865280151</float>
+						<int key="IBUIProgressViewStyle">1</int>
 					</object>
 					<object class="IBUIImageView" id="82976920">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -78,11 +80,13 @@
 					<object class="IBUIProgressView" id="98784114">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{78, 66}, {56, 9}}</string>
+						<string key="NSFrame">{{78, 66}, {56, 11}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<float key="IBUIAlpha">0.80000001192092896</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<float key="IBUIProgress">0.64084506034851074</float>
+						<int key="IBUIProgressViewStyle">1</int>
 					</object>
 					<object class="IBUIImageView" id="960371082">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -99,31 +103,32 @@
 					<object class="IBUIProgressView" id="241249719">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{142, 66}, {56, 9}}</string>
+						<string key="NSFrame">{{142, 66}, {56, 11}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
+						<float key="IBUIAlpha">0.80000001192092896</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<float key="IBUIProgress">0.44366195797920227</float>
+						<int key="IBUIProgressViewStyle">1</int>
 					</object>
 					<object class="IBUIView" id="511748524">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">319</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIImageView" id="67839798">
+							<object class="IBUIImageView" id="515697781">
 								<reference key="NSNextResponder" ref="511748524"/>
-								<int key="NSvFlags">274</int>
+								<int key="NSvFlags">292</int>
 								<string key="NSFrameSize">{305, 305}</string>
 								<reference key="NSSuperview" ref="511748524"/>
-								<int key="IBUIContentMode">2</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">sudorace.png</string>
+									<string key="NSResourceName">backsudo.png</string>
 								</object>
 							</object>
-							<object class="IBUIView" id="474191744">
+							<object class="IBUIImageView" id="67839798">
 								<reference key="NSNextResponder" ref="511748524"/>
 								<int key="NSvFlags">274</int>
 								<string key="NSFrameSize">{305, 305}</string>
@@ -132,6 +137,20 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MCAwAA</bytes>
 								</object>
+								<int key="IBUIContentMode">2</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">sudorace2.png</string>
+								</object>
+							</object>
+							<object class="IBUIView" id="474191744">
+								<reference key="NSNextResponder" ref="511748524"/>
+								<int key="NSvFlags">274</int>
+								<string key="NSFrameSize">{305, 305}</string>
+								<reference key="NSSuperview" ref="511748524"/>
+								<reference key="IBUIBackgroundColor" ref="723809798"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<object class="IBUIView" id="47751335">
@@ -346,14 +365,14 @@
 					<object class="IBUILabel" id="1051095523">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{212, 4}, {121, 57}}</string>
+						<string key="NSFrame">{{212, 10}, {91, 43}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">03:44</string>
+						<string key="IBUIText">00:00</string>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">36</double>
@@ -494,6 +513,22 @@
 					</object>
 					<int key="connectionID">80</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">myProgressView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="241249719"/>
+					</object>
+					<int key="connectionID">83</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">clock</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1051095523"/>
+					</object>
+					<int key="connectionID">84</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -624,6 +659,7 @@
 							<reference ref="1015214860"/>
 							<reference ref="474191744"/>
 							<reference ref="67839798"/>
+							<reference ref="515697781"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -654,6 +690,11 @@
 						<int key="objectID">81</int>
 						<reference key="object" ref="1051095523"/>
 						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">82</int>
+						<reference key="object" ref="515697781"/>
+						<reference key="parent" ref="511748524"/>
 					</object>
 				</object>
 			</object>
@@ -700,6 +741,9 @@
 					<string>77.IBViewBoundsToFrameTransform</string>
 					<string>8.IBPluginDependency</string>
 					<string>81.IBPluginDependency</string>
+					<string>81.IBViewBoundsToFrameTransform</string>
+					<string>82.IBPluginDependency</string>
+					<string>82.IBViewBoundsToFrameTransform</string>
 					<string>9.CustomClassName</string>
 					<string>9.IBPluginDependency</string>
 				</object>
@@ -707,7 +751,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>ArenaViewController</string>
 					<string>UIResponder</string>
-					<string>{{447, 270}, {320, 480}}</string>
+					<string>{{102, 617}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -762,6 +806,11 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDVAAAwjQAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform"/>
 					<string>ArenaView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
@@ -782,7 +831,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">81</int>
+			<int key="maxID">84</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -814,13 +863,17 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>arenaView</string>
+							<string>clock</string>
 							<string>gridView</string>
+							<string>myProgressView</string>
 							<string>transparentButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ArenaView</string>
+							<string>UILabel</string>
 							<string>GridView</string>
+							<string>UIProgressView</string>
 							<string>TransparentButton</string>
 						</object>
 					</object>
@@ -829,7 +882,9 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>arenaView</string>
+							<string>clock</string>
 							<string>gridView</string>
+							<string>myProgressView</string>
 							<string>transparentButton</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -839,8 +894,16 @@
 								<string key="candidateClassName">ArenaView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">clock</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">gridView</string>
 								<string key="candidateClassName">GridView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">myProgressView</string>
+								<string key="candidateClassName">UIProgressView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">transparentButton</string>
@@ -1094,19 +1157,21 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>backsudo.png</string>
 				<string>clean_code_72_color.png</string>
 				<string>kentbeck.png</string>
 				<string>st.jpg</string>
-				<string>sudorace.png</string>
+				<string>sudorace2.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{305, 305}</string>
 				<string>{200, 200}</string>
 				<string>{429, 448}</string>
 				<string>{130, 113}</string>
 				<string>{1000, 1000}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">117</string>
+		<string key="IBCocoaTouchPluginVersion">123</string>
 	</data>
 </archive>

@@ -20,6 +20,12 @@
 	IBOutlet ArenaView *arenaView;
 	IBOutlet GridView *gridView;
 	IBOutlet TransparentButton *transparentButton;	
+
+	IBOutlet UILabel *clock;
+	double startTime;
+	NSTimer *clockUpdater;
+	
+	IBOutlet UIProgressView *myProgressView;
 }
 
 @property(nonatomic, retain) Arena *arena;
@@ -27,6 +33,9 @@
 @property(nonatomic, retain) ArenaView *arenaView;
 @property(nonatomic, retain) GridView *gridView;
 @property(nonatomic, retain) TransparentButton *transparentButton;
+@property(nonatomic, retain) UILabel *clock;
+
+@property(nonatomic, retain) UIProgressView *myProgressView;
 
 -(IBAction)digitPressed:(id)sender;
 
