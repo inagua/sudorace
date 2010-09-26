@@ -8,6 +8,7 @@
 
 #import "Arena.h"
 #import "Grid.h"
+#import "GridChooser.h"
 
 @interface Arena (private) 
 -(Grid *) chooseGrid;
@@ -75,9 +76,7 @@
 
 #pragma mark private
 -(Grid *) chooseGrid {	
-		// TODO : choose grid randomly according to difficulty 
-	Grid *result = [[Grid alloc] initWithString:@"...185379.1764985.58.73.1646.341..9817859.24.49.32.7168..261937762953481931874..."];
-	return result;
+	return [[GridChooser shared] pick];
 }
 
 

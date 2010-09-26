@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,11 @@
 		7014881C123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
 		702DCBCA12437BE400A54B41 /* SudokuException.m in Sources */ = {isa = PBXBuildFile; fileRef = 702DCBC912437BE400A54B41 /* SudokuException.m */; };
 		702DCBCB12437BE400A54B41 /* SudokuException.m in Sources */ = {isa = PBXBuildFile; fileRef = 702DCBC912437BE400A54B41 /* SudokuException.m */; };
+		7043D6D8124FAB67003F870D /* GridChooser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7043D6D7124FAB67003F870D /* GridChooser.m */; };
+		7043D6D9124FAB67003F870D /* GridChooser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7043D6D7124FAB67003F870D /* GridChooser.m */; };
+		7043D6F3124FACD8003F870D /* grids.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7043D6F2124FACD8003F870D /* grids.txt */; };
+		7043D6F4124FACD8003F870D /* grids.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7043D6F2124FACD8003F870D /* grids.txt */; };
+		7043D728124FAF19003F870D /* TestGridChooser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7043D726124FAF19003F870D /* TestGridChooser.m */; };
 		7050691D124214D6002E52A9 /* ArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7050691C124214D6002E52A9 /* ArenaView.m */; };
 		70534DFD123FE63300B0C9D9 /* TransparentButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70534DFC123FE63300B0C9D9 /* TransparentButton.m */; };
 		705B3499123D34DC00A9A735 /* Arena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B3498123D34DC00A9A735 /* Arena.m */; };
@@ -76,6 +81,11 @@
 		7014881A123E23CF009439A7 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		702DCBC812437BE400A54B41 /* SudokuException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuException.h; sourceTree = "<group>"; };
 		702DCBC912437BE400A54B41 /* SudokuException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuException.m; sourceTree = "<group>"; };
+		7043D6D6124FAB67003F870D /* GridChooser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridChooser.h; sourceTree = "<group>"; };
+		7043D6D7124FAB67003F870D /* GridChooser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridChooser.m; sourceTree = "<group>"; };
+		7043D6F2124FACD8003F870D /* grids.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grids.txt; sourceTree = "<group>"; };
+		7043D725124FAF19003F870D /* TestGridChooser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGridChooser.h; sourceTree = "<group>"; };
+		7043D726124FAF19003F870D /* TestGridChooser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGridChooser.m; sourceTree = "<group>"; };
 		7050691B124214D5002E52A9 /* ArenaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArenaView.h; sourceTree = "<group>"; };
 		7050691C124214D6002E52A9 /* ArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArenaView.m; sourceTree = "<group>"; };
 		70534DFB123FE63300B0C9D9 /* TransparentButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentButton.h; sourceTree = "<group>"; };
@@ -186,6 +196,7 @@
 				70030246123E606600F686AC /* ArenaViewController.xib */,
 				70030227123E5E6400F686AC /* DashboardViewController.xib */,
 				70030214123E5D8000F686AC /* SettingsViewController.xib */,
+				7043D6F2124FACD8003F870D /* grids.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -256,6 +267,8 @@
 				70BE5129123AD6D10032918D /* TestGrid.m */,
 				705B34B4123D37E100A9A735 /* TestArena.h */,
 				705B34B5123D37E100A9A735 /* TestArena.m */,
+				7043D725124FAF19003F870D /* TestGridChooser.h */,
+				7043D726124FAF19003F870D /* TestGridChooser.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -272,6 +285,8 @@
 				705B349D123D357400A9A735 /* Player.m */,
 				70148819123E23CF009439A7 /* Cell.h */,
 				7014881A123E23CF009439A7 /* Cell.m */,
+				7043D6D6124FAB67003F870D /* GridChooser.h */,
+				7043D6D7124FAB67003F870D /* GridChooser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -329,7 +344,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "sudorace" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -364,6 +379,7 @@
 				70EFBEFD1242489A005127AD /* st.jpg in Resources */,
 				70E6A814124AB682002ED1B5 /* backsudo.png in Resources */,
 				70E6A818124AB7E5002ED1B5 /* sudorace2.png in Resources */,
+				7043D6F3124FACD8003F870D /* grids.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7043D6F4124FACD8003F870D /* grids.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +412,7 @@
 				702DCBCA12437BE400A54B41 /* SudokuException.m in Sources */,
 				70C7F9521243CFA70072106C /* GridView.m in Sources */,
 				7095CCC41246408000474F45 /* CompositeSudokuException.m in Sources */,
+				7043D6D8124FAB67003F870D /* GridChooser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +430,8 @@
 				702DCBCB12437BE400A54B41 /* SudokuException.m in Sources */,
 				70C7F9531243CFA70072106C /* GridView.m in Sources */,
 				7095CCC51246408000474F45 /* CompositeSudokuException.m in Sources */,
+				7043D6D9124FAB67003F870D /* GridChooser.m in Sources */,
+				7043D728124FAF19003F870D /* TestGridChooser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +534,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -528,7 +548,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};

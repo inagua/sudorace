@@ -237,7 +237,7 @@ typedef struct SPoint SPoint;
 }
 
 -(NSString *)description {	
-	NSString *result = [NSString stringWithFormat:@"%@ \n", player.name];
+	NSString *result = [NSString stringWithFormat:@"Creator : %@ \n", player.name];
 	for (int j = 0; j < 9; j++) {
 		for (int i = 0; i < 9; i++) {
 			result = [result stringByAppendingFormat:@"%d ", cells[i][j] ];
