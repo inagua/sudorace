@@ -15,8 +15,7 @@
 -(void) testReadingFromFile {	
 	GridChooser *gridChooser = [GridChooser shared];	
 	for (int i = 0; i < 100; i++) {		
-		Grid *grid = [[gridChooser pick] retain];		
-		NSLog(@"grid is %@", grid);
+		[gridChooser pick];
 	}	
 }
 

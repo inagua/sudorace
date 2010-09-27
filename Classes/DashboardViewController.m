@@ -13,6 +13,11 @@
 
 @implementation DashboardViewController
 
+@synthesize currentSession;
+@synthesize txtMessage;
+@synthesize connect;
+@synthesize disconnect;
+
 -(IBAction) createArena{
 		
 	Player *me = [[Player alloc] initWithName:@"Joe"];
@@ -53,6 +58,105 @@
 }
 */
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+	NSData* data;
+    NSString *str = [NSString stringWithString:txtMessage.text];
+    data = [str dataUsingEncoding: NSASCIIStringEncoding];        
+    [self mySendDataToPeers:data];   
+	
+	[txtMessage resignFirstResponder];
+}
+
+- (void)peerPickerController:(GKPeerPickerController *)picker 
+              didConnectPeer:(NSString *)peerID 
+                   toSession:(GKSession *) session {
+    self.currentSession = session;
+    session.delegate = self;
+    [session setDataReceiveHandler:self withContext:nil];
+	picker.delegate = nil;
+	
+    [picker dismiss];
+    [picker autorelease];
+}
+
+- (void)peerPickerControllerDidCancel:(GKPeerPickerController *)picker {
+    picker.delegate = nil;
+    [picker autorelease];
+    
+    [connect setHidden:NO];
+    [disconnect setHidden:YES];
+}
+
+- (void) mySendDataToPeers:(NSData *) data{
+    if (currentSession) 
+        [self.currentSession sendDataToAllPeers:data 
+                                   withDataMode:GKSendDataReliable 
+                                          error:nil];    
+}
+
+- (void)session:(GKSession *)session 
+           peer:(NSString *)peerID 
+ didChangeState:(GKPeerConnectionState)state {
+    switch (state)
+    {
+        case GKPeerStateConnected:
+            NSLog(@"connected");
+            break;
+        case GKPeerStateDisconnected:
+            NSLog(@"disconnected");
+            [self.currentSession release];
+            currentSession = nil;
+            
+            [connect setHidden:NO];
+            [disconnect setHidden:YES];
+            break;
+    }
+}
+
+-(IBAction) btnSend:(id) sender{
+    NSData* data;
+    NSString *str = [NSString stringWithString:txtMessage.text];
+    data = [str dataUsingEncoding: NSASCIIStringEncoding];        
+    [self mySendDataToPeers:data];        
+}
+
+- (void) receiveData:(NSData *)data 
+            fromPeer:(NSString *)peer 
+           inSession:(GKSession *)session 
+             context:(void *)context {
+	
+		//---convert the NSData to NSString---
+    NSString* str;
+    str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data received" 
+                                                    message:str 
+                                                   delegate:self 
+                                          cancelButtonTitle:@"OK" 
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];    
+}
+
+
+-(IBAction) btnConnect:(id) sender{
+	picker = [[GKPeerPickerController alloc] init];
+    picker.delegate = self;
+    picker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;      
+	
+    [connect setHidden:YES];
+    [disconnect setHidden:NO];    
+    [picker show];    
+}
+
+-(IBAction) btnDisconnect:(id) sender {
+    [self.currentSession disconnectFromAllPeers];
+    [self.currentSession release];
+    currentSession = nil;
+    
+    [connect setHidden:NO];
+    [disconnect setHidden:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -68,6 +172,7 @@
 
 
 - (void)dealloc {
+	[currentSession release];
     [super dealloc];
 }
 
