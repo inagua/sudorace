@@ -17,6 +17,8 @@ static GridChooser *sharedInstance = nil;
 -(id) initWithFileContent {
 	if (self = [super init]) {
 		
+		NSLog(@"will read");
+		
 		self.allGrids = [[NSMutableArray alloc] init];
 		
 		NSString *filePath = [[NSBundle mainBundle] pathForResource:@"grids" ofType:@"txt"];		
@@ -25,6 +27,8 @@ static GridChooser *sharedInstance = nil;
 		for (NSString *line in [fh componentsSeparatedByString:@"\n"]) {		
 			[allGrids addObject:[[Grid alloc] initWithString:line]];			
 		}
+				
+		NSLog(@"Reading done");
 	}
 	return self;
 }

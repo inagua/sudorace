@@ -76,5 +76,19 @@
 	GHAssertEquals([grid fillingPercent], 4.0/4.0, @"");
 }
 
+-(void)testSerialization {
+
+	Player *joe = [[Player alloc] initWithName:@"joe"];
+	grid.player = joe;
+	
+	NSData *gridData = [NSKeyedArchiver archivedDataWithRootObject:grid];
+	NSLog(@"gridData %@", gridData);
+
+	Grid *deserialized = [NSKeyedUnarchiver unarchiveObjectWithData:gridData];
+	NSLog(@"deserialized %@", deserialized);
+
+	GHAssertEqualObjects(deserialized, grid, @"");
+}
+
 
 @end

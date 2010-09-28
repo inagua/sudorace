@@ -11,7 +11,12 @@
 
 @implementation SettingsViewController
 
+@synthesize nameTextField;
+
 -(IBAction)buttonPressed:(id)sender{
+	
+	NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+	[def setObject:nameTextField.text forKey:@"name"];
 	
 	DashboardViewController *db = [[DashboardViewController alloc] initWithNibName:@"DashboardViewController" bundle:nil];
 	[self.navigationController pushViewController:db animated:YES];
@@ -29,12 +34,15 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+	nameTextField.text = [def stringForKey:@"name"];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -59,6 +67,7 @@
 
 
 - (void)dealloc {
+	[nameTextField release];
     [super dealloc];
 }
 

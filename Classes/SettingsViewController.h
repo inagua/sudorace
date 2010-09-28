@@ -11,7 +11,11 @@
 
 @interface SettingsViewController : UIViewController {
 
+	IBOutlet UITextField *nameTextField;
+	
 }
+
+@property(nonatomic, retain) UITextField *nameTextField;
 
 -(IBAction)buttonPressed:(id)sender;
 

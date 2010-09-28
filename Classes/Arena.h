@@ -11,12 +11,13 @@
 #import "Grid.h"
 #import "Cell.h"
 
-@interface Arena : NSObject {
+@interface Arena : NSObject <NSCoding> {
 	Grid *originalGrid;
 	NSMutableArray *grids;
 }
 
 @property(nonatomic, retain) Grid *originalGrid;
+@property(nonatomic, retain) NSMutableArray *grids;
 
 -(id)initWithPlayer:(Player *)creator grid:(Grid *)grid;
 -(id)initWithPlayer:(Player *)creator;

@@ -66,4 +66,18 @@
 	[self assertCellAtX:8 Y:8 isFixed:NO value:0 percent:1.0];	
 }
 
+-(void) testSerialization {
+	Player *jack = [[Player alloc] initWithName:@"jack"];
+	Grid *jackGrid =[arena acceptPlayer:jack];
+	NSLog(@"arena %@", arena);
+	
+	NSData *dataArena = [NSKeyedArchiver archivedDataWithRootObject:arena];
+	NSLog(@"dataArena %@", dataArena);
+
+	
+	Arena *deserialized = [NSKeyedUnarchiver unarchiveObjectWithData:dataArena];
+	NSLog(@"deserialized %@", deserialized);
+	
+}
+
 @end

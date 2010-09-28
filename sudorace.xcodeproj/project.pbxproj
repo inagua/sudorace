@@ -21,6 +21,8 @@
 		70030247123E606600F686AC /* ArenaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70030245123E606600F686AC /* ArenaViewController.m */; };
 		70030248123E606600F686AC /* ArenaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70030246123E606600F686AC /* ArenaViewController.xib */; };
 		70030251123E627C00F686AC /* sudorace.png in Resources */ = {isa = PBXBuildFile; fileRef = 70030250123E627C00F686AC /* sudorace.png */; };
+		70058A86125228ED00C140A0 /* TestPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70058A85125228ED00C140A0 /* TestPlayer.m */; };
+		70058A87125228ED00C140A0 /* TestPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70058A85125228ED00C140A0 /* TestPlayer.m */; };
 		7014881B123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
 		7014881C123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
 		702DCBCA12437BE400A54B41 /* SudokuException.m in Sources */ = {isa = PBXBuildFile; fileRef = 702DCBC912437BE400A54B41 /* SudokuException.m */; };
@@ -78,6 +80,8 @@
 		70030245123E606600F686AC /* ArenaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArenaViewController.m; sourceTree = "<group>"; };
 		70030246123E606600F686AC /* ArenaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ArenaViewController.xib; path = Classes/ArenaViewController.xib; sourceTree = "<group>"; };
 		70030250123E627C00F686AC /* sudorace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sudorace.png; sourceTree = "<group>"; };
+		70058A84125228ED00C140A0 /* TestPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPlayer.h; sourceTree = "<group>"; };
+		70058A85125228ED00C140A0 /* TestPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPlayer.m; sourceTree = "<group>"; };
 		70148819123E23CF009439A7 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		7014881A123E23CF009439A7 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		702DCBC812437BE400A54B41 /* SudokuException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuException.h; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 				705B34B5123D37E100A9A735 /* TestArena.m */,
 				7043D725124FAF19003F870D /* TestGridChooser.h */,
 				7043D726124FAF19003F870D /* TestGridChooser.m */,
+				70058A84125228ED00C140A0 /* TestPlayer.h */,
+				70058A85125228ED00C140A0 /* TestPlayer.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 				70C7F9521243CFA70072106C /* GridView.m in Sources */,
 				7095CCC41246408000474F45 /* CompositeSudokuException.m in Sources */,
 				7043D6D8124FAB67003F870D /* GridChooser.m in Sources */,
+				70058A86125228ED00C140A0 /* TestPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +443,7 @@
 				7095CCC51246408000474F45 /* CompositeSudokuException.m in Sources */,
 				7043D6D9124FAB67003F870D /* GridChooser.m in Sources */,
 				7043D728124FAF19003F870D /* TestGridChooser.m in Sources */,
+				70058A87125228ED00C140A0 /* TestPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +546,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
 		};

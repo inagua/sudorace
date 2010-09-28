@@ -17,6 +17,7 @@
 @implementation Arena
 
 @synthesize originalGrid;
+@synthesize grids;
 
 -(id)initWithPlayer:(Player *)creator{	
 	return [self initWithPlayer:creator grid:[self chooseGrid]];
@@ -74,10 +75,35 @@
 
 }
 
+
+#pragma mark NSCoding
+- (id)initWithCoder:(NSCoder *)decoder{
+	if (self=[super init]) {
+        self.originalGrid	= [decoder decodeObjectForKey:@"originalGrid"];
+		self.grids			= [decoder decodeObjectForKey:@"grids"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder{
+	[encoder encodeObject:originalGrid forKey:@"originalGrid"];
+	[encoder encodeObject:grids forKey:@"grids"];
+}
+
 #pragma mark private
 -(Grid *) chooseGrid {	
 	return [[GridChooser shared] pick];
 }
+#pragma mark -
 
+-(NSString *)description {
+	NSString *result = [NSString stringWithFormat:@"[arena created by %@ with %d players]", 
+						[originalGrid player].name,
+						[grids count]];	
+	for (Grid *grid in [self gridsOrderedByFilling]) {
+		result = [result stringByAppendingFormat:@"\n%@\n", [grid description]];
+	}
+	return result;
+}
 
 @end

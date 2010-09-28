@@ -208,6 +208,19 @@ typedef struct SPoint SPoint;
 	return [[Grid alloc] initWithString:self.initialString];
 }
 
+#pragma mark NSCoding
+- (id)initWithCoder:(NSCoder *)decoder{
+	if (self=[self initWithString:[decoder decodeObjectForKey:@"initialString"]]) {
+		self.player	= [decoder decodeObject];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder{
+	[encoder encodeObject:self.initialString forKey:@"initialString"];
+	[encoder encodeObject:player];
+}
+
 #pragma mark compare
 
 - (NSComparisonResult)compare:(id)otherObject {
@@ -227,6 +240,14 @@ typedef struct SPoint SPoint;
 
 #pragma mark -
 
+-(BOOL)isEqual:(id)object{
+
+	Grid *other = (Grid *)object;
+	
+	return	[other.initialString isEqualToString:self.initialString] &&
+			[other.player isEqual:self.player];
+}
+
 -(void)dealloc{
 	[player release];
 	[initialString release];	
@@ -237,7 +258,7 @@ typedef struct SPoint SPoint;
 }
 
 -(NSString *)description {	
-	NSString *result = [NSString stringWithFormat:@"Creator : %@ \n", player.name];
+	NSString *result = [NSString stringWithFormat:@"Owner : %@ \n", player.name];
 	for (int j = 0; j < 9; j++) {
 		for (int i = 0; i < 9; i++) {
 			result = [result stringByAppendingFormat:@"%d ", cells[i][j] ];

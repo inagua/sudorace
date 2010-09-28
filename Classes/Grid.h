@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Player.h"
 
-@interface Grid : NSObject <NSCopying> {
+@interface Grid : NSObject <NSCopying, NSCoding> {
 	
 	NSString *initialString;
 	

@@ -11,12 +11,16 @@
 #import "Player.h"
 #import "Arena.h"
 
+@interface DashboardViewController(private)
+-(NSString *)fullName:(NSString *)peerID;
+-(void) updateListPeers;
+@end
+
+
 @implementation DashboardViewController
 
 @synthesize currentSession;
-@synthesize txtMessage;
-@synthesize connect;
-@synthesize disconnect;
+@synthesize namesAround;
 
 -(IBAction) createArena{
 		
@@ -58,66 +62,95 @@
 }
 */
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	NSData* data;
-    NSString *str = [NSString stringWithString:txtMessage.text];
-    data = [str dataUsingEncoding: NSASCIIStringEncoding];        
-    [self mySendDataToPeers:data];   
+- (void)session:(GKSession*) session didReceiveConnectionRequestFromPeer:(NSString*) peerID {
+	NSLog(@"SUDORACE will accept connection from %@", [self fullName:peerID]);
+    [session acceptConnectionFromPeer:peerID error:nil];
+}
+
+
+- (void) sendMyNameToPeers{
 	
-	[txtMessage resignFirstResponder];
-}
-
-- (void)peerPickerController:(GKPeerPickerController *)picker 
-              didConnectPeer:(NSString *)peerID 
-                   toSession:(GKSession *) session {
-    self.currentSession = session;
-    session.delegate = self;
-    [session setDataReceiveHandler:self withContext:nil];
-	picker.delegate = nil;
+	NSString *myName	= [[NSUserDefaults standardUserDefaults] stringForKey:@"name"];	
+	NSData *data		= [myName dataUsingEncoding: NSASCIIStringEncoding];
 	
-    [picker dismiss];
-    [picker autorelease];
+    if (currentSession) {		
+		NSLog(@"SUDORACE sending %@", data);		
+        [currentSession sendDataToAllPeers:data 
+							  withDataMode:GKSendDataReliable 
+									 error:nil];    
+	}
 }
 
-- (void)peerPickerControllerDidCancel:(GKPeerPickerController *)picker {
-    picker.delegate = nil;
-    [picker autorelease];
-    
-    [connect setHidden:NO];
-    [disconnect setHidden:YES];
+-(NSString *)fullName:(NSString *)peerID{
+	return [NSString stringWithFormat:@"%@(%@)", peerID, [currentSession displayNameForPeer:peerID]];
 }
 
-- (void) mySendDataToPeers:(NSData *) data{
-    if (currentSession) 
-        [self.currentSession sendDataToAllPeers:data 
-                                   withDataMode:GKSendDataReliable 
-                                          error:nil];    
+-(NSString *)display:(GKPeerConnectionState)state{
+	NSString *stateS = @"GKState unknown ?";
+	switch (state) {
+		case GKPeerStateAvailable:
+			stateS= @"GKPeerStateAvailable";
+			break;
+		case GKPeerStateUnavailable:
+			stateS= @"GKPeerStateUnavailable";
+			break;
+		case GKPeerStateConnected:
+			stateS= @"GKPeerStateConnected";
+			break;
+		case GKPeerStateDisconnected:
+			stateS= @"GKPeerStateDisconnected";
+			break;
+		case GKPeerStateConnecting:
+			stateS= @"GKPeerStateConnecting";
+			break;
+	}
+	return stateS;
 }
 
 - (void)session:(GKSession *)session 
-           peer:(NSString *)peerID 
+		   peer:(NSString *)peerID 
  didChangeState:(GKPeerConnectionState)state {
-    switch (state)
-    {
-        case GKPeerStateConnected:
-            NSLog(@"connected");
-            break;
-        case GKPeerStateDisconnected:
-            NSLog(@"disconnected");
-            [self.currentSession release];
-            currentSession = nil;
-            
-            [connect setHidden:NO];
-            [disconnect setHidden:YES];
-            break;
-    }
+	
+	NSString *stateS = [self display:state];	
+	NSLog(@"SUDORACE state changed for %@, is now %@", [self fullName:peerID], stateS);
+	
+	// Retain new session.
+	self.currentSession = session;
+	
+	switch (state) {
+		case GKPeerStateAvailable:
+			NSLog(@"SUDORACE will try to connect with %@", [self fullName:peerID]);
+			[session connectToPeer:peerID withTimeout:0];
+			break;
+			
+		case GKPeerStateConnected:
+			NSLog(@"");
+			NSString *peerFullName = [self fullName:peerID];
+			NSLog(@"SUDORACE connected with %@", peerFullName);			
+			[self updateListPeers];
+			break;
+			
+		case GKPeerStateDisconnected:
+			NSLog(@"SUDORACE disconnected with %@", [self fullName:peerID]);
+			[self updateListPeers];
+			break;
+			
+		default:
+			NSLog(@"SUDORACE no action for ", stateS);	
+	}
+	
 }
 
--(IBAction) btnSend:(id) sender{
-    NSData* data;
-    NSString *str = [NSString stringWithString:txtMessage.text];
-    data = [str dataUsingEncoding: NSASCIIStringEncoding];        
-    [self mySendDataToPeers:data];        
+-(void) updateListPeers{	
+	
+	NSMutableArray *listNames = [NSMutableArray array];	
+	for (NSString *peerID in [currentSession peersWithConnectionState:GKPeerStateConnected]) {
+		[listNames addObject:[self fullName:peerID]];
+	}	
+	self.namesAround.text = [listNames componentsJoinedByString:@", "];		
+	NSLog(@"SUDORACE updating with %@", listNames);
+	
+	[self sendMyNameToPeers];
 }
 
 - (void) receiveData:(NSData *)data 
@@ -125,43 +158,26 @@
            inSession:(GKSession *)session 
              context:(void *)context {
 	
-		//---convert the NSData to NSString---
-    NSString* str;
-    str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Data received" 
-                                                    message:str 
-                                                   delegate:self 
-                                          cancelButtonTitle:@"OK" 
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];    
+    NSString* str = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];    	
+	NSLog(@"SUDORACE receiving %@", str);	
 }
 
-
--(IBAction) btnConnect:(id) sender{
-	picker = [[GKPeerPickerController alloc] init];
-    picker.delegate = self;
-    picker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;      
-	
-    [connect setHidden:YES];
-    [disconnect setHidden:NO];    
-    [picker show];    
-}
-
--(IBAction) btnDisconnect:(id) sender {
-    [self.currentSession disconnectFromAllPeers];
-    [self.currentSession release];
-    currentSession = nil;
-    
-    [connect setHidden:NO];
-    [disconnect setHidden:YES];
-}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(void)viewDidLoad {
+		
+	self.currentSession = [[GKSession alloc] initWithSessionID:nil displayName:nil sessionMode:GKSessionModePeer];
+	self.currentSession.delegate = self;
+	self.currentSession.available = YES;
+	self.currentSession.disconnectTimeout = 0;		
+	[self.currentSession setDataReceiveHandler:self withContext:nil];
+
 }
 
 - (void)viewDidUnload {
@@ -173,6 +189,8 @@
 
 - (void)dealloc {
 	[currentSession release];
+	[namesAround release];
+	
     [super dealloc];
 }
 
