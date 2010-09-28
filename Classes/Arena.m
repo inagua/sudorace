@@ -18,6 +18,7 @@
 
 @synthesize originalGrid;
 @synthesize grids;
+@synthesize arenaId;
 
 -(id)initWithPlayer:(Player *)creator{	
 	return [self initWithPlayer:creator grid:[self chooseGrid]];
@@ -104,6 +105,14 @@
 		result = [result stringByAppendingFormat:@"\n%@\n", [grid description]];
 	}
 	return result;
+}
+
+-(void)dealloc {
+	[arenaId release];
+	[originalGrid release];
+	[grids release];
+	
+	[super dealloc];
 }
 
 @end

@@ -10,10 +10,13 @@
 #import "ArenaViewController.h"
 #import "Player.h"
 #import "Arena.h"
+#import "SessionKeeper.h"
 
 @interface DashboardViewController(private)
 -(NSString *)fullName:(NSString *)peerID;
 -(void) updateListPeers;
+-(void) addAccessArenaButtonForArena:(Arena *)arena;
+-(void) announcePeersArenaCreated:(Arena *)arena;
 @end
 
 
@@ -21,20 +24,53 @@
 
 @synthesize currentSession;
 @synthesize namesAround;
+@synthesize arenasView;
 
 -(IBAction) createArena{
 		
-	Player *me = [[Player alloc] initWithName:@"Joe"];
+	NSString *myName = [[NSUserDefaults standardUserDefaults] stringForKey:@"name"];	
+	Player *me = [[Player alloc] initWithName:myName];
+	
 	Arena *arena = [[Arena alloc] initWithPlayer:me];
-	Grid *grid = [[arena gridsOrderedByFilling] objectAtIndex:0];
+
+	[self addAccessArenaButtonForArena:arena];
+	[self announcePeersArenaCreated:arena];
 	
-	ArenaViewController *arenaController = [[ArenaViewController alloc] initWithNibName:@"ArenaViewController" bundle:nil];
-	arenaController.arena = arena;	
-	arenaController.grid = grid;	
+}
+
+-(void) announcePeersArenaCreated:(Arena *)arena {
+	//NSString *myName	= [[NSUserDefaults standardUserDefaults] stringForKey:@"name"];	
+//	NSData *data		= [myName dataUsingEncoding: NSASCIIStringEncoding];
+//	
+//    if (currentSession) {		
+//		NSLog(@"SUDORACE sending %@", data);		
+//        [currentSession sendDataToAllPeers:data 
+//							  withDataMode:GKSendDataReliable 
+//									 error:nil];    
+//	}
 	
-	[self.navigationController pushViewController:arenaController animated:YES];
-	[arenaController release];
+}
+
+-(void) addAccessArenaButtonForArena:(Arena *)arena {
+	UIButton *buttonAccess = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+
+	NSString *title = [NSString stringWithFormat:@"Arena created by %@", arena.originalGrid.player.name];	
+	[buttonAccess setTitle:title forState:UIControlStateNormal];	
+	buttonAccess.frame = CGRectMake(5.0, 5.0, 200.0, 40.0);	
 	
+	[arenasView addSubview:buttonAccess];
+}
+
+
+-(void)accessArena {
+	
+	//	Grid *grid = [[arena gridsOrderedByFilling] objectAtIndex:0];
+	
+	//	ArenaViewController *arenaController = [[ArenaViewController alloc] initWithNibName:@"ArenaViewController" bundle:nil];
+	//	arenaController.arena = arena;	
+	//	arenaController.grid = grid;		
+	//	[self.navigationController pushViewController:arenaController animated:YES];
+	//	[arenaController release];
 }
 
 /*
@@ -145,7 +181,7 @@
 	
 	NSMutableArray *listNames = [NSMutableArray array];	
 	for (NSString *peerID in [currentSession peersWithConnectionState:GKPeerStateConnected]) {
-		[listNames addObject:[self fullName:peerID]];
+		[listNames addObject:[currentSession displayNameForPeer:peerID]];
 	}	
 	self.namesAround.text = [listNames componentsJoinedByString:@", "];		
 	NSLog(@"SUDORACE updating with %@", listNames);
@@ -172,12 +208,9 @@
 
 -(void)viewDidLoad {
 		
-	self.currentSession = [[GKSession alloc] initWithSessionID:nil displayName:nil sessionMode:GKSessionModePeer];
+	self.currentSession = [SessionKeeper shared].currentSession;
 	self.currentSession.delegate = self;
-	self.currentSession.available = YES;
-	self.currentSession.disconnectTimeout = 0;		
-	[self.currentSession setDataReceiveHandler:self withContext:nil];
-
+	NSLog(@"current session = %@", self.currentSession);
 }
 
 - (void)viewDidUnload {
@@ -190,6 +223,7 @@
 - (void)dealloc {
 	[currentSession release];
 	[namesAround release];
+	[arenasView release];
 	
     [super dealloc];
 }

@@ -14,8 +14,10 @@
 @interface Arena : NSObject <NSCoding> {
 	Grid *originalGrid;
 	NSMutableArray *grids;
+	NSString *arenaId;
 }
 
+@property(nonatomic, retain) NSString *arenaId;
 @property(nonatomic, retain) Grid *originalGrid;
 @property(nonatomic, retain) NSMutableArray *grids;
 

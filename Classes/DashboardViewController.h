@@ -14,10 +14,12 @@
 	GKSession *currentSession;
 
 	IBOutlet UILabel *namesAround;
+	IBOutlet UIView *arenasView;
 }
 
 @property (nonatomic, retain) GKSession *currentSession;
 @property (nonatomic, retain) UILabel *namesAround;
+@property (nonatomic, retain) UIView *arenasView;
 
 -(IBAction) createArena;
 
