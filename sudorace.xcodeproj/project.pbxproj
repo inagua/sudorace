@@ -23,7 +23,6 @@
 		70030251123E627C00F686AC /* sudorace.png in Resources */ = {isa = PBXBuildFile; fileRef = 70030250123E627C00F686AC /* sudorace.png */; };
 		70058A87125228ED00C140A0 /* TestPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70058A85125228ED00C140A0 /* TestPlayer.m */; };
 		70058B1C1252417400C140A0 /* SessionKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70058B1B1252417400C140A0 /* SessionKeeper.m */; };
-		70058B1D1252417400C140A0 /* SessionKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70058B1B1252417400C140A0 /* SessionKeeper.m */; };
 		7014881B123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
 		7014881C123E23CF009439A7 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7014881A123E23CF009439A7 /* Cell.m */; };
 		702DCBCA12437BE400A54B41 /* SudokuException.m in Sources */ = {isa = PBXBuildFile; fileRef = 702DCBC912437BE400A54B41 /* SudokuException.m */; };
@@ -40,6 +39,12 @@
 		705B349E123D357400A9A735 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B349D123D357400A9A735 /* Player.m */; };
 		705B349F123D357400A9A735 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B349D123D357400A9A735 /* Player.m */; };
 		705B34B7123D37E100A9A735 /* TestArena.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B34B5123D37E100A9A735 /* TestArena.m */; };
+		707230D012535340009BE592 /* SwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 707230CF12535340009BE592 /* SwitchViewController.m */; };
+		707231991253835F009BE592 /* Interpret.m in Sources */ = {isa = PBXBuildFile; fileRef = 707231981253835F009BE592 /* Interpret.m */; };
+		7072319A1253835F009BE592 /* Interpret.m in Sources */ = {isa = PBXBuildFile; fileRef = 707231981253835F009BE592 /* Interpret.m */; };
+		707231A112538603009BE592 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 707231A012538603009BE592 /* Command.m */; };
+		707231A212538603009BE592 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 707231A012538603009BE592 /* Command.m */; };
+		707231A61253883A009BE592 /* TestInterpret.m in Sources */ = {isa = PBXBuildFile; fileRef = 707231A41253883A009BE592 /* TestInterpret.m */; };
 		707BDF9B1250B39D005BB2EB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 707BDF9A1250B39D005BB2EB /* GameKit.framework */; };
 		7095CCC41246408000474F45 /* CompositeSudokuException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7095CCC31246408000474F45 /* CompositeSudokuException.m */; };
 		7095CCC51246408000474F45 /* CompositeSudokuException.m in Sources */ = {isa = PBXBuildFile; fileRef = 7095CCC31246408000474F45 /* CompositeSudokuException.m */; };
@@ -104,6 +109,14 @@
 		705B349D123D357400A9A735 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		705B34B4123D37E100A9A735 /* TestArena.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArena.h; sourceTree = "<group>"; };
 		705B34B5123D37E100A9A735 /* TestArena.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArena.m; sourceTree = "<group>"; };
+		707230CE12535340009BE592 /* SwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchViewController.h; sourceTree = "<group>"; };
+		707230CF12535340009BE592 /* SwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchViewController.m; sourceTree = "<group>"; };
+		707231971253835F009BE592 /* Interpret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interpret.h; sourceTree = "<group>"; };
+		707231981253835F009BE592 /* Interpret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interpret.m; sourceTree = "<group>"; };
+		7072319F12538603009BE592 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
+		707231A012538603009BE592 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
+		707231A31253883A009BE592 /* TestInterpret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestInterpret.h; sourceTree = "<group>"; };
+		707231A41253883A009BE592 /* TestInterpret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInterpret.m; sourceTree = "<group>"; };
 		707BDF9A1250B39D005BB2EB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		7095CCC21246408000474F45 /* CompositeSudokuException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompositeSudokuException.h; sourceTree = "<group>"; };
 		7095CCC31246408000474F45 /* CompositeSudokuException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompositeSudokuException.m; sourceTree = "<group>"; };
@@ -231,6 +244,8 @@
 				70030226123E5E6400F686AC /* DashboardViewController.m */,
 				70030212123E5D8000F686AC /* SettingsViewController.h */,
 				70030213123E5D8000F686AC /* SettingsViewController.m */,
+				707230CE12535340009BE592 /* SwitchViewController.h */,
+				707230CF12535340009BE592 /* SwitchViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +266,10 @@
 			children = (
 				70058B1A1252417400C140A0 /* SessionKeeper.h */,
 				70058B1B1252417400C140A0 /* SessionKeeper.m */,
+				707231971253835F009BE592 /* Interpret.h */,
+				707231981253835F009BE592 /* Interpret.m */,
+				7072319F12538603009BE592 /* Command.h */,
+				707231A012538603009BE592 /* Command.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -291,6 +310,8 @@
 				7043D726124FAF19003F870D /* TestGridChooser.m */,
 				70058A84125228ED00C140A0 /* TestPlayer.h */,
 				70058A85125228ED00C140A0 /* TestPlayer.m */,
+				707231A31253883A009BE592 /* TestInterpret.h */,
+				707231A41253883A009BE592 /* TestInterpret.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -437,6 +458,9 @@
 				7095CCC41246408000474F45 /* CompositeSudokuException.m in Sources */,
 				7043D6D8124FAB67003F870D /* GridChooser.m in Sources */,
 				70058B1C1252417400C140A0 /* SessionKeeper.m in Sources */,
+				707230D012535340009BE592 /* SwitchViewController.m in Sources */,
+				707231991253835F009BE592 /* Interpret.m in Sources */,
+				707231A112538603009BE592 /* Command.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +481,9 @@
 				7043D6D9124FAB67003F870D /* GridChooser.m in Sources */,
 				7043D728124FAF19003F870D /* TestGridChooser.m in Sources */,
 				70058A87125228ED00C140A0 /* TestPlayer.m in Sources */,
-				70058B1D1252417400C140A0 /* SessionKeeper.m in Sources */,
+				7072319A1253835F009BE592 /* Interpret.m in Sources */,
+				707231A212538603009BE592 /* Command.m in Sources */,
+				707231A61253883A009BE592 /* TestInterpret.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

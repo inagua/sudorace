@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class SwitchViewController;
 
 @interface SettingsViewController : UIViewController {
 
 	IBOutlet UITextField *nameTextField;
-	
+	SwitchViewController *switcher;
 }
 
 @property(nonatomic, retain) UITextField *nameTextField;
+@property(nonatomic, retain) SwitchViewController *switcher;
 
--(IBAction)buttonPressed:(id)sender;
+-(IBAction) buttonPressed:(id)sender;
+-(IBAction) toggleInfo;
 
 @end

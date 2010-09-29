@@ -7,7 +7,7 @@
 //
 
 #import "sudoraceAppDelegate.h"
-#import "SettingsViewController.h"
+#import "SwitchViewController.h"
 
 @implementation sudoraceAppDelegate
 
@@ -18,10 +18,10 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-	SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
-	navController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
-	[settingsViewController release];
+    	
+	SwitchViewController *switchViewController = [[SwitchViewController alloc] init];
+	navController = [[UINavigationController alloc] initWithRootViewController:switchViewController];
+	[switchViewController release];
 	
 	[window addSubview:navController.view];
     [window makeKeyAndVisible];

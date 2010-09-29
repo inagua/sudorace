@@ -19,7 +19,6 @@ static SessionKeeper *sharedInstance = nil;
 		self.currentSession = [[GKSession alloc] initWithSessionID:nil displayName:nil sessionMode:GKSessionModePeer];
 		self.currentSession.available = YES;
 		self.currentSession.disconnectTimeout = 0;		
-		[self.currentSession setDataReceiveHandler:self withContext:nil];	
 	}
 	return self;
 }

@@ -12,6 +12,7 @@
 @implementation SettingsViewController
 
 @synthesize nameTextField;
+@synthesize switcher;
 
 -(IBAction)buttonPressed:(id)sender{
 	
@@ -20,8 +21,11 @@
 	
 	DashboardViewController *db = [[DashboardViewController alloc] initWithNibName:@"DashboardViewController" bundle:nil];
 	[self.navigationController pushViewController:db animated:YES];
-	[db release];
-	
+	[db release];	
+}
+
+-(IBAction) toggleInfo{
+	[switcher toggleInfo];
 }
 
 /*
@@ -68,6 +72,8 @@
 
 - (void)dealloc {
 	[nameTextField release];
+	[switcher release];
+	
     [super dealloc];
 }
 
