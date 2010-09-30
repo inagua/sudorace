@@ -32,6 +32,21 @@ static SessionKeeper *sharedInstance = nil;
 	return sharedInstance;
 }
 
+-(void)sendString:(NSString *)s{
+	
+	NSData *data = [s dataUsingEncoding: NSASCIIStringEncoding];	
+	
+    if (currentSession) {		
+		NSLog(@"SUDORACE sending %@", data);		
+        BOOL sent = [currentSession sendDataToAllPeers:data 
+										  withDataMode:GKSendDataReliable 
+												 error:nil];   
+		NSLog(@"SUDORACE sent %d", sent);
+	}else {
+		[NSException raise:@"Sending error" format:@"Trying to send as session is nil"];
+	}
+}
+
 -(void) dealloc {
 	[currentSession release];
 	[super dealloc];

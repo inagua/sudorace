@@ -17,4 +17,6 @@
 
 +(SessionKeeper *)shared;
 
+-(void)sendString:(NSString *)s;
+
 @end

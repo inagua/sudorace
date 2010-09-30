@@ -40,21 +40,11 @@
 	[self announcePeersArenaCreated:arena];	
 }
 
--(void) announcePeersArenaCreated:(Arena *)arena {
-	
-	NSLog(@"SUDORACE will try to announcePeersArenaCreated");
-	
-	NSString *myPeerId = currentSession.peerID;
-	NSString *newArenaMessage	= [NSString stringWithFormat:@"newarena:%@", myPeerId];
-	NSData *data		= [newArenaMessage dataUsingEncoding: NSASCIIStringEncoding];
-	
-    if (currentSession) {		
-		NSLog(@"SUDORACE announcePeersArenaCreated %@", data);		
-        BOOL sent = [currentSession sendDataToAllPeers:data 
-							  withDataMode:GKSendDataReliable 
-									 error:nil];   
-		NSLog(@"sent %d", sent);
-	}	
+-(void) announcePeersArenaCreated:(Arena *)arena {	
+	NSLog(@"SUDORACE will try to announcePeersArenaCreated");	
+	NSString *myPeerId			= currentSession.peerID;
+	NSString *newArenaMessage	= [NSString stringWithFormat:@"newarena:%@", myPeerId];	
+	[[SessionKeeper shared] sendString:newArenaMessage];
 }
 
 -(void) addAccessArenaButtonForArena:(Arena *)arena {
@@ -121,20 +111,10 @@
 }
 
 
-- (void) sendMyNameToPeers{
-		
-	NSLog(@"SUDORACE will try to send my name");
-	
-	NSString *myName	= [NSString stringWithFormat:@"name:%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"name"]];	
-	NSData *data		= [myName dataUsingEncoding: NSASCIIStringEncoding];
-	
-    if (currentSession) {		
-		NSLog(@"SUDORACE sending %@", data);		
-        BOOL sent = [currentSession sendDataToAllPeers:data 
-										  withDataMode:GKSendDataReliable 
-												 error:nil];   
-		NSLog(@"SUDORACE sent %d", sent);
-	}
+- (void) sendMyNameToPeers{		
+	NSLog(@"SUDORACE will try to send my name");	
+	NSString *myName	= [NSString stringWithFormat:@"name:%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"name"]];		
+	[[SessionKeeper shared] sendString:myName];
 }
 
 -(NSString *)fullName:(NSString *)peerID{
@@ -209,12 +189,30 @@
 	[self sendMyNameToPeers];
 }
 
+
+-(void)sendRequestJoinArena:(id) sender{		
+	UIButton *bt = (UIButton *)sender;
+	NSLog(@"Sender tag is %d", bt.tag);
+
+	NSInteger arenaId = bt.tag;	
+	NSString *cmd = [NSString stringWithFormat:@"join:%d:%@", arenaId, currentSession.peerID];
+	[[SessionKeeper shared] sendString:cmd];
+}
+
+-(void)acceptOrReject:(NSString *)params {
+	NSArray *arrayParams =  [params componentsSeparatedByString:@":"];
+	NSLog(@"%@ wants to join %@", [arrayParams objectAtIndex:0],  [arrayParams objectAtIndex:1]);
+}
+
 -(void)addArenaToJoin:(NSString *) arenaId{
-	UIButton *buttonJoin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	
+	UIButton *buttonJoin = [UIButton buttonWithType:UIButtonTypeRoundedRect];	
+	buttonJoin.tag = [arenaId integerValue];	
 	NSString *title = [NSString stringWithFormat:@"Join arena %@", arenaId];	
 	[buttonJoin setTitle:title forState:UIControlStateNormal];	
 	buttonJoin.frame = CGRectMake(5.0, 5.0, 200.0, 40.0);	
 	
+	[buttonJoin	addTarget:self action:@selector(sendRequestJoinArena:) forControlEvents:UIControlEventTouchUpInside]; 	
 	[arenasView addSubview:buttonJoin];	
 }
 
@@ -223,12 +221,14 @@
     NSString *str	= [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];			
 	Command *cmd	= [[Interpret shared] read:str];	
 	
-	NSString *verb = cmd.verb;
-	NSString *params = cmd.params;
+	NSString *verb		= cmd.verb;
+	NSString *params	= cmd.params;
 	NSLog(@"SUDORACE receiving %@ %@", verb, params);	
 	
 	if ([verb isEqualToString:@"newarena"]) {
 		[self addArenaToJoin:params];
+	}else if ([verb isEqualToString:@"join"]) {
+		[self acceptOrReject:params];
 	}
 }
 
